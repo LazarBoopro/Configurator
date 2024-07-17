@@ -1,0 +1,14 @@
+@import "variables.scss";
+
+.configurator {
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 0.75fr;
+
+  &__left {
+    background-color: $dark-gray-clr;
+  }
+  &__right {
+    background-color: $light-gray-clr;
+  }
+}
