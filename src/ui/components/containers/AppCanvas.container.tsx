@@ -3,9 +3,12 @@ import { easing } from "maath";
 import { Center, Sky } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 
-import FenceTest from "../models/FenceTest2";
+import FenceTest from "../models/Fence.model";
 
 import "../../styles/containers/appCanvas.container.scss";
+
+const CAMERA_SPEED_X = 5000;
+const CAMERA_SPEED_Y = 7000;
 
 export default function AppCanvas() {
   return (
@@ -62,7 +65,7 @@ function CameraRig({ children }: { children: React.ReactNode }) {
   useFrame((_, delta) => {
     easing.dampE(
       cameraRef.current.rotation,
-      [mousePosition.y / 7000, -mousePosition.x / 5000, 0],
+      [mousePosition.y / CAMERA_SPEED_Y, -mousePosition.x / CAMERA_SPEED_X, 0],
       0.5,
       delta
     );
