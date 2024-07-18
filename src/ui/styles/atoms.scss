@@ -1,0 +1,114 @@
+@import "variables.scss";
+
+
+.button {
+
+    color: $white-clr;
+    border-radius: 2.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem;
+    border: none;
+    cursor: pointer;
+
+    &.primary {
+        background: $primary-clr-2;
+
+        &:hover {
+            background: $black-clr;
+        }
+    }
+
+    &.secondary {
+        background: $black-clr;
+
+        &:hover {
+            background: $primary-clr;
+        }
+    }
+
+}
+
+.select-container {
+    .label {
+        padding-left: 1rem;
+        color: $dark-gray-clr-2;
+
+    }
+
+    .select {
+        width: 100%;
+        background-color: $white-clr;
+        border-radius: 2.75rem;
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+        border: 2px solid $light-gray-clr;
+
+
+        &:focus,
+        &:focus-within {
+            outline: none;
+        }
+    }
+}
+
+.input-container {
+    .label {
+        padding-left: 1rem;
+        color: $dark-gray-clr-2;
+    }
+
+    .input {
+        width: 100%;
+        background-color: $white-clr;
+        border-radius: 2.75rem;
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+        border: 2px solid $light-gray-clr;
+
+
+        &:focus,
+        &:focus-within {
+            outline: none;
+        }
+
+        &.radio {
+            width: auto;
+            margin: 0.25rem;
+
+        }
+    }
+}
+
+
+
+.text {
+    font-size: 1.25rem;
+
+    &.title {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+
+    &.info {
+        font-size: 1rem;
+
+    }
+
+    &.primary {
+        color: $primary-clr-2;
+    }
+
+    &.secondary {
+        color: $black-clr;
+    }
+
+    &.red {
+        color: $red-clr;
+    }
+
+    &.bold {
+        font-weight: 600;
+    }
+
+}
