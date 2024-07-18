@@ -8,7 +8,9 @@
   &__left {
     background-color: $dark-gray-clr;
   }
+
   &__right {
-    background-color: $light-gray-clr;
+    background-color: $white-clr;
+    padding: 1rem;
   }
 }
