@@ -4,7 +4,7 @@ import { useValues } from "../../../context/FormValuesContext";
 export default function Scene(props: any) {
   const { values } = useValues();
 
-  const { nodes, materials } = useGLTF("models/scene2Optimized.gltf");
+  const { nodes, materials } = useGLTF("/public/models/scene2Optimized.gltf");
 
   return (
     <group {...props} dispose={null}>
@@ -127,7 +127,7 @@ export default function Scene(props: any) {
   );
 }
 
-useGLTF.preload("models/scene2Optimized.gltf");
+useGLTF.preload("/public/models/scene2Optimized.gltf");
 
 function Lights() {
   return (
