@@ -28,7 +28,7 @@ function App() {
                 >
                   Obracun
                 </Button>
-                <Button variant="secondary" onClick={() => {}}>
+                <Button variant="outline" onClick={() => {}}>
                   Zakazite izlazak na teren
                 </Button>
               </div>

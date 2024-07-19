@@ -3,7 +3,7 @@ import { easing } from "maath";
 import { Center, Sky } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 
-import FenceTest from "../models/Fence.model";
+import Scene from "../models/Scene.model";
 
 import "../../styles/containers/appCanvas.container.scss";
 
@@ -18,11 +18,9 @@ export default function AppCanvas() {
 
         <CameraRig>
           <Center>
-            <FenceTest />
+            <Scene />
           </Center>
         </CameraRig>
-
-        {/* <OrbitControls  /> */}
       </Canvas>
     </div>
   );
@@ -39,8 +37,8 @@ function Lights() {
         distance={500}
       />
 
-      <ambientLight intensity={1.5} />
-      <directionalLight position={[10, 10, 5]} />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[10, 10, -10]} />
     </>
   );
 }
@@ -71,5 +69,9 @@ function CameraRig({ children }: { children: React.ReactNode }) {
     );
   });
 
-  return <group ref={cameraRef}>{children}</group>;
+  return (
+    <group position={[-1.5, 2, 0]} ref={cameraRef}>
+      {children}
+    </group>
+  );
 }
