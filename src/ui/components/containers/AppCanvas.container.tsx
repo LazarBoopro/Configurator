@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { easing } from "maath";
 import { Center, Sky } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { ErrorBoundary } from "react-error-boundary";
 
 import Scene from "../models/Scene.model";
 
@@ -11,16 +12,27 @@ const CAMERA_SPEED_X = 5000;
 const CAMERA_SPEED_Y = 7000;
 
 export default function AppCanvas() {
-  return (
-    <div className="three-canvas">
-      <Canvas>
-        <Lights />
+  const [error, setError] = useState(false);
 
-        <CameraRig>
-          <Center>
-            <Scene />
-          </Center>
-        </CameraRig>
+  return error ? null : (
+    <div className="three-canvas">
+      <Canvas onError={() => setError(true)}>
+        <Lights />
+        <ErrorBoundary
+          fallback={
+            <mesh>
+              <sphereGeometry />
+            </mesh>
+          }
+        >
+          <CameraRig>
+            <Center>
+              <Scene />
+            </Center>
+          </CameraRig>
+
+          <boxGeometry />
+        </ErrorBoundary>
       </Canvas>
     </div>
   );
