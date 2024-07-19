@@ -1,7 +1,7 @@
 import { useGLTF, PerspectiveCamera } from "@react-three/drei";
 import { useValues } from "../../../context/FormValuesContext";
 
-const PATH = `raw.githubusercontent.com/LazarBoopro/configurator/28ba830e9f6a753d04d9f8667f415d62b56982e9/scene2Optimized.gltf`;
+const PATH = "/models/scene2Optimized.gltf";
 
 export default function Scene(props: any) {
   const { values } = useValues();
