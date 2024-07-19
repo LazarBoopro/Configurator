@@ -1,0 +1,154 @@
+@import "variables.scss";
+
+.button {
+  color: $white-clr;
+  border-radius: 2.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+  border: none;
+  cursor: pointer;
+  transition: color, background 0.2s ease-in-out;
+
+  &.primary {
+    background: $primary-clr-2;
+
+    &:hover {
+      background: rgb($primary-clr-2, 0.65);
+    }
+  }
+
+  &.secondary {
+    background: $black-clr;
+
+    &:hover {
+      //   color: $black-clr;
+      background: rgb($black-clr, 0.85);
+    }
+  }
+
+  &.outline {
+    outline: 1px solid $black-clr;
+    color: $black-clr;
+    background-color: transparent;
+
+    &:hover {
+      background: rgb($black-clr, 0.125);
+    }
+  }
+}
+
+.select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  .label {
+    color: $dark-gray-clr-2;
+  }
+
+  .select {
+    width: 100%;
+    background-color: $white-clr;
+    border-radius: 2.75rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid $light-gray-clr;
+
+    &:focus,
+    &:focus-within {
+      outline: none;
+    }
+  }
+}
+
+.input-container {
+  &:not(.radio) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &.radio {
+    position: relative;
+    transition: 0.2s ease all;
+    &:hover {
+      background: rgb($light-gray-clr, 0.5);
+    }
+
+    &,
+    & > * {
+      cursor: pointer;
+    }
+    border-radius: 0.8rem;
+    outline: 1px solid $light-gray-clr;
+    padding: 0.75rem 2rem;
+
+    &:has(input:checked) {
+      background: $black-clr;
+
+      & > * {
+        color: $white-clr;
+      }
+    }
+  }
+
+  .label {
+    color: $dark-gray-clr-2;
+  }
+
+  .input {
+    width: 100%;
+    background-color: $white-clr;
+    border-radius: 2.75rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid $light-gray-clr;
+
+    &:focus,
+    &:focus-within {
+      outline: none;
+    }
+
+    &.radio {
+      cursor: pointer;
+      width: auto;
+      margin: 0.25rem;
+      opacity: 0;
+      position: absolute;
+      background: red;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.text {
+  font-size: 1.25rem;
+
+  &.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  &.info {
+    font-size: 1rem;
+  }
+
+  &.primary {
+    color: $primary-clr-2;
+  }
+
+  &.secondary {
+    color: $black-clr;
+  }
+
+  &.red {
+    color: $red-clr;
+  }
+
+  &.bold {
+    font-weight: 600;
+  }
+}

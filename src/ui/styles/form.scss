@@ -1,0 +1,140 @@
+@import "variables.scss";
+
+.form-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .row-items {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .options {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background-color: $light-gray-clr;
+  }
+
+  .divider ~ * {
+    margin-bottom: 0.5rem;
+  }
+
+  .color-cont,
+  .application-cont {
+    height: 4rem;
+    width: 4rem;
+    outline: 1px solid $light-gray-clr;
+    padding: 0.25rem;
+    cursor: pointer;
+    position: relative;
+    border-radius: 0.8rem;
+
+    & > * {
+      border-radius: 0.75rem;
+    }
+
+    .color-image,
+    .application-image {
+      height: 100%;
+      width: 100%;
+    }
+
+    .check-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .note {
+    background-color: rgb($light-gray-clr, 0.35);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & > p {
+      color: $primary-clr;
+      text-align: left;
+    }
+
+    & > p:nth-of-type(2) {
+      color: $black-clr;
+      line-height: 1.1;
+      font-size: clamp(1rem, 2vw, 1.125rem);
+    }
+  }
+
+  .info-wrapper {
+    border-radius: 0.75rem;
+    padding: 0 1.25rem;
+    color: $black-clr;
+    line-height: 1.1;
+  }
+
+  .price {
+    background-color: rgb($light-gray-clr, 0.35);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    // color: $primary-clr-2;
+    color: $black-clr;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .table {
+    width: 100%;
+    background-color: rgb($light-gray-clr, 0.35);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    .body {
+      .row {
+        border-bottom-style: dashed;
+
+        &:is(:last-child) {
+          & > * {
+            border-bottom: none !important;
+          }
+        }
+
+        .cell {
+          padding: 0.75rem;
+          border-bottom: 1px solid #e6e6e6;
+          text-align: left;
+          font-size: 1rem;
+          border-bottom-style: dashed;
+
+          &:first-child {
+            font-weight: 600;
+            color: $black-clr;
+            width: 33%;
+          }
+
+          &:last-child {
+            text-align: right;
+            color: $dark-gray-clr;
+          }
+        }
+      }
+    }
+  }
+}
