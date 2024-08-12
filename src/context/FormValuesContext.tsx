@@ -9,11 +9,11 @@ interface ValuesProviderProps {
 
 // Create the context with a default value
 const ValuesContext = createContext<
-  | {
-      values: ValuesType;
-      setValues: React.Dispatch<React.SetStateAction<ValuesType>>;
-    }
-  | undefined
+  // | {
+  //     values: ValuesType;
+  //     setValues: React.Dispatch<React.SetStateAction<ValuesType>>;
+  //   }
+  any | undefined
 >(undefined);
 
 // Create the provider component
@@ -32,8 +32,13 @@ export const ValuesProvider: React.FC<ValuesProviderProps> = ({ children }) => {
     length: 0,
   });
 
+  const [texture, setTexture] = useState({
+    wall: "wood_1",
+    pillars: "pillars_1",
+  });
+
   return (
-    <ValuesContext.Provider value={{ values, setValues }}>
+    <ValuesContext.Provider value={{ values, setValues, texture, setTexture }}>
       {children}
     </ValuesContext.Provider>
   );
