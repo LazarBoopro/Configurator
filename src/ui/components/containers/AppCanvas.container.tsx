@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { easing } from "maath";
-import { Center, Sky } from "@react-three/drei";
+import { Environment, Sky } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ErrorBoundary } from "react-error-boundary";
 
-import Scene from "../models/Scene.model";
+import { Model } from "../models/Model.model";
 
 import "../../styles/containers/appCanvas.container.scss";
 
@@ -16,8 +16,7 @@ export default function AppCanvas() {
 
   return error ? null : (
     <div className="three-canvas">
-      <Canvas onError={() => setError(true)}>
-        <Lights />
+      <Canvas dpr={[1, 2]} shadows onError={() => setError(true)}>
         <ErrorBoundary
           fallback={
             <mesh>
@@ -26,12 +25,9 @@ export default function AppCanvas() {
           }
         >
           <CameraRig>
-            <Center>
-              <Scene />
-            </Center>
+            <Lights />
+            <Model />
           </CameraRig>
-
-          <boxGeometry />
         </ErrorBoundary>
       </Canvas>
     </div>
@@ -41,16 +37,12 @@ export default function AppCanvas() {
 function Lights() {
   return (
     <>
-      <Sky
-        azimuth={0}
-        sunPosition={1}
-        rayleigh={0.25}
-        inclination={0.6}
-        distance={500}
-      />
-
+      <Sky rayleigh={0.5} azimuth={100} distance={1000} />
+      <Environment preset="sunset" environmentIntensity={0.5} />
       <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 10, -10]} />
+      <pointLight intensity={0.5} decay={2} position={[-2, 0, 2]} />
+      <pointLight intensity={1} decay={2} position={[-2, 6, 2]} />
+      <pointLight intensity={2} decay={2} position={[1, 0, 2]} castShadow />
     </>
   );
 }
@@ -82,7 +74,7 @@ function CameraRig({ children }: { children: React.ReactNode }) {
   });
 
   return (
-    <group position={[-1.5, 2, 0]} ref={cameraRef}>
+    <group position={[-0.15, 0, 3.5]} ref={cameraRef}>
       {children}
     </group>
   );

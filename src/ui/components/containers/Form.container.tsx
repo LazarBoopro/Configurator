@@ -5,16 +5,21 @@ import { useValues } from "../../../context/FormValuesContext";
 import { ValuesType } from "../../../interfaces/interfaces";
 import { CheckIcon } from "../atoms/CheckIcon.atom";
 
-import wood1 from "../../../../public/textures/icons/wood 1.jpg";
-import wood2 from "../../../../public/textures/icons/wood 2.jpg";
-import wood3 from "../../../../public/textures/icons/wood 3.jpg";
-import wood4 from "../../../../public/textures/icons/wood 4.jpg";
-import stone from "../../../../public/textures/icons/stone.jpg";
-
+import wood1 from "../../../../public/textures/wood_1/wood_basecolor.jpg";
+import wood2 from "../../../../public/textures/wood_2/wood_basecolor.jpg";
+import wood3 from "../../../../public/textures/wood_3/wood_basecolor.jpg";
+import wood4 from "../../../../public/textures/wood_4/wood_basecolor.jpg";
 import "../../styles/form.scss";
 
 const Form = () => {
-  const { values, setValues } = useValues();
+  const { values, setValues, setTexture, texture } = useValues();
+
+  const handleChangeTexture = (type: "pillars" | "wall", texture: string) => {
+    setTexture((prev: any) => ({
+      ...prev,
+      [type]: texture,
+    }));
+  };
 
   const onChange = (
     value: boolean | string | number | object,
@@ -49,13 +54,7 @@ const Form = () => {
         <div className="options">
           <Input
             onChange={() => {
-              onChange(
-                {
-                  name: "concrete",
-                  texture: "Plaster 17",
-                },
-                "pillars"
-              );
+              handleChangeTexture("pillars", "metal_1");
             }}
             label="Betonski"
             type="radio"
@@ -63,13 +62,7 @@ const Form = () => {
           />
           <Input
             onChange={() => {
-              onChange(
-                {
-                  name: "alu",
-                  texture: "Acid Treated Metal",
-                },
-                "pillars"
-              );
+              handleChangeTexture("pillars", "metal_2");
             }}
             label="Aluminijumski"
             type="radio"
@@ -84,17 +77,11 @@ const Form = () => {
           <div
             className="color-cont"
             onClick={() => {
-              onChange(
-                {
-                  name: "Drvo",
-                  texture: "Wood.003",
-                },
-                "wall"
-              );
+              handleChangeTexture("wall", "wood_1");
             }}
           >
-            <img className="color-image" src={wood3} style={{ opacity: 0.5 }} />
-            {values.wall.name === "Drvo" && (
+            <img className="color-image" src={wood1} />
+            {texture.wall === "wood_1" && (
               <div className="check-icon">
                 <CheckIcon />
               </div>
@@ -104,17 +91,11 @@ const Form = () => {
           <div
             className="color-cont"
             onClick={() => {
-              onChange(
-                {
-                  name: "Drvo 2",
-                  texture: "Rough Wood",
-                },
-                "wall"
-              );
+              handleChangeTexture("wall", "wood_2");
             }}
           >
-            <img className="color-image" src={wood2} style={{ opacity: 0.5 }} />
-            {values.wall.name === "Drvo 2" && (
+            <img className="color-image" src={wood2} />
+            {texture.wall === "wood_2" && (
               <div className="check-icon">
                 <CheckIcon />
               </div>
@@ -124,13 +105,25 @@ const Form = () => {
           <div
             className="color-cont"
             onClick={() => {
-              onChange(
-                {
-                  name: "Drvo 4",
-                  texture: "Rough Wood.002",
-                },
-                "wall"
-              );
+              handleChangeTexture("wall", "wood_3");
+            }}
+          >
+            <img
+              className="color-image"
+              src={wood3}
+              style={{ opacity: 0.85 }}
+            />
+            {texture.wall === "wood_3" && (
+              <div className="check-icon">
+                <CheckIcon />
+              </div>
+            )}
+          </div>
+
+          <div
+            className="color-cont"
+            onClick={() => {
+              handleChangeTexture("wall", "wood_4");
             }}
           >
             <img
@@ -138,45 +131,7 @@ const Form = () => {
               src={wood4}
               style={{ opacity: 0.85 }}
             />
-            {values.wall.name === "Drvo 4" && (
-              <div className="check-icon">
-                <CheckIcon />
-              </div>
-            )}
-          </div>
-          <div
-            className="color-cont"
-            onClick={() => {
-              onChange(
-                {
-                  name: "Drvo 3",
-                  texture: "Wood.001",
-                },
-                "wall"
-              );
-            }}
-          >
-            <img className="color-image" src={wood1} style={{ opacity: 0.5 }} />
-            {values.wall.name === "Drvo 3" && (
-              <div className="check-icon">
-                <CheckIcon />
-              </div>
-            )}
-          </div>
-          <div
-            className="color-cont"
-            onClick={() => {
-              onChange(
-                {
-                  name: "Kamen",
-                  texture: "Stone Bricks",
-                },
-                "wall"
-              );
-            }}
-          >
-            <img className="color-image" src={stone} style={{ opacity: 0.5 }} />
-            {values.wall.name === "Kamen" && (
+            {texture.wall === "wood_4" && (
               <div className="check-icon">
                 <CheckIcon />
               </div>
@@ -184,59 +139,7 @@ const Form = () => {
           </div>
         </div>
       </div>
-      {/* APLIKACIJE */}
 
-      {/* <div className="form-main__row">
-        <Text variant="info">Aplikacija: </Text>
-        <div className="row-items">
-          <div
-            className="application-cont"
-            onClick={() => {
-              onChange("Bez aplikacije", "application");
-            }}
-          >
-            <img className="application-image" />
-            {values.application === "Bez aplikacije" && (
-              <div className="check-icon">
-                <CheckIcon />
-              </div>
-            )}
-          </div>
-          <div
-            className="application-cont"
-            onClick={() => {
-              onChange("Application 1", "application");
-            }}
-          >
-            <img
-              className="application-image"
-              style={{ backgroundColor: "blue" }}
-            />
-            {values.application === "Application 1" && (
-              <div className="check-icon">
-                <CheckIcon />
-              </div>
-            )}
-          </div>
-          <div
-            className="application-cont"
-            onClick={() => {
-              onChange("Application 2", "application");
-            }}
-          >
-            <img
-              className="application-image"
-              style={{ backgroundColor: "yellow" }}
-            />
-            {values.application === "Application 2" && (
-              <div className="check-icon">
-                <CheckIcon />
-              </div>
-            )}
-          </div>
-        </div>
-      </div> */}
-      {/* APLIKACIJE */}
       <div>
         <Select
           options={[
@@ -277,7 +180,7 @@ const Form = () => {
             </tr>
             <tr className="row">
               <td className="cell primary">Tip zida</td>
-              <td className="cell">{values.wall.name}</td>
+              <td className="cell">{values.wall.name}</td>{" "}
             </tr>
             {/* APLIKACIJE */}
             {/* <tr className="row">
@@ -332,3 +235,63 @@ const Form = () => {
 };
 
 export default Form;
+
+//  {
+//    /* APLIKACIJE */
+//  }
+
+//  {
+//    /* <div className="form-main__row">
+//       <Text variant="info">Aplikacija: </Text>
+//       <div className="row-items">
+//         <div
+//           className="application-cont"
+//           onClick={() => {
+//             onChange("Bez aplikacije", "application");
+//           }}
+//         >
+//           <img className="application-image" />
+//           {values.application === "Bez aplikacije" && (
+//             <div className="check-icon">
+//               <CheckIcon />
+//             </div>
+//           )}
+//         </div>
+//         <div
+//           className="application-cont"
+//           onClick={() => {
+//             onChange("Application 1", "application");
+//           }}
+//         >
+//           <img
+//             className="application-image"
+//             style={{ backgroundColor: "blue" }}
+//           />
+//           {values.application === "Application 1" && (
+//             <div className="check-icon">
+//               <CheckIcon />
+//             </div>
+//           )}
+//         </div>
+//         <div
+//           className="application-cont"
+//           onClick={() => {
+//             onChange("Application 2", "application");
+//           }}
+//         >
+//           <img
+//             className="application-image"
+//             style={{ backgroundColor: "yellow" }}
+//           />
+//           {values.application === "Application 2" && (
+//             <div className="check-icon">
+//               <CheckIcon />
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div> */
+//  }
+//  {
+//    /* APLIKACIJE */
+//  }
