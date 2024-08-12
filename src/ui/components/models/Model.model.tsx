@@ -42,7 +42,7 @@ type GLTFResult = GLTF & {
 };
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/models/Fencev3.gltf") as GLTFResult;
+  const { nodes, materials } = useGLTF("/models/fenceFinal.glb") as GLTFResult;
 
   const { selectedTexturePillar, selectedTextureWall, floor } = useTextures();
 
@@ -253,4 +253,4 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/models/Fencev3.gltf");
+useGLTF.preload("/models/fenceFinal.glb");
