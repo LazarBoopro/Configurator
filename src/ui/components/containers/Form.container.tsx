@@ -9,10 +9,14 @@ import wood1 from "../../../../public/textures/wood_1/wood_basecolor.jpg";
 import wood2 from "../../../../public/textures/wood_2/wood_basecolor.jpg";
 import wood3 from "../../../../public/textures/wood_3/wood_basecolor.jpg";
 import wood4 from "../../../../public/textures/wood_4/wood_basecolor.jpg";
+import wood5 from "../../../../public/textures/wood_5/wood_basecolor.jpg";
+import wood6 from "../../../../public/textures/wood_6/wood_basecolor.jpg";
+
 import "../../styles/form.scss";
 
 const Form = () => {
-  const { values, setValues, setTexture, texture } = useValues();
+  const { values, setValues, setTexture, texture, scene, setScene } =
+    useValues();
 
   const handleChangeTexture = (type: "pillars" | "wall", texture: string) => {
     setTexture((prev: any) => ({
@@ -50,6 +54,30 @@ const Form = () => {
       <div className="divider" />
 
       <div className="form-main__row">
+        <Text variant="info">Model </Text>
+        <div className="options">
+          <Input
+            onChange={() => {
+              setScene(0);
+            }}
+            label="Izolovani"
+            type="radio"
+            name="scena"
+            selected={scene === 0}
+          />
+          <Input
+            onChange={() => {
+              setScene(1);
+            }}
+            label="Scena"
+            type="radio"
+            name="scena"
+            selected={scene === 1}
+          />
+        </div>
+      </div>
+
+      <div className="form-main__row">
         <Text variant="info">Tip stubova </Text>
         <div className="options">
           <Input
@@ -58,6 +86,7 @@ const Form = () => {
             }}
             label="Betonski"
             type="radio"
+            selected={texture.pillars === "metal_1"}
             name="stub"
           />
           <Input
@@ -67,6 +96,7 @@ const Form = () => {
             label="Aluminijumski"
             type="radio"
             name="stub"
+            selected={texture.pillars === "metal_2"}
           />
         </div>
       </div>
@@ -132,6 +162,40 @@ const Form = () => {
               style={{ opacity: 0.85 }}
             />
             {texture.wall === "wood_4" && (
+              <div className="check-icon">
+                <CheckIcon />
+              </div>
+            )}
+          </div>
+          <div
+            className="color-cont"
+            onClick={() => {
+              handleChangeTexture("wall", "wood_5");
+            }}
+          >
+            <img
+              className="color-image"
+              src={wood5}
+              style={{ opacity: 0.85 }}
+            />
+            {texture.wall === "wood_5" && (
+              <div className="check-icon">
+                <CheckIcon />
+              </div>
+            )}
+          </div>
+          <div
+            className="color-cont"
+            onClick={() => {
+              handleChangeTexture("wall", "wood_6");
+            }}
+          >
+            <img
+              className="color-image"
+              src={wood6}
+              style={{ opacity: 0.85 }}
+            />
+            {texture.wall === "wood_6" && (
               <div className="check-icon">
                 <CheckIcon />
               </div>

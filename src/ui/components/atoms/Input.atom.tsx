@@ -6,8 +6,9 @@ type InputProps = {
   type?: HTMLInputTypeAttribute;
   label: string;
   name?: string;
+  selected?: boolean;
 };
-const Input = ({ onChange, type, label, name }: InputProps) => {
+const Input = ({ onChange, type, label, name, selected }: InputProps) => {
   return (
     <div className={`input-container ${type === "radio" ? "radio" : ""}`}>
       {type !== "radio" && <span className="label">{label}</span>}
@@ -17,6 +18,7 @@ const Input = ({ onChange, type, label, name }: InputProps) => {
         className={`input ${type}`}
         name={name}
         id={label}
+        checked={type === "checkbox" || type === "radio" ? selected : undefined}
       />
       {type === "radio" && (
         <label htmlFor={label} className="label">
