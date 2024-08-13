@@ -32,16 +32,17 @@
 
   .color-cont,
   .application-cont {
-    height: 4rem;
-    width: 4rem;
+    // height: 4rem;
+    width: 3rem;
+    aspect-ratio: 1;
     outline: 1px solid $light-gray-clr;
     padding: 0.25rem;
     cursor: pointer;
     position: relative;
-    border-radius: 0.8rem;
+    border-radius: 0.75rem;
 
     & > * {
-      border-radius: 0.75rem;
+      border-radius: 0.55rem;
     }
 
     .color-image,

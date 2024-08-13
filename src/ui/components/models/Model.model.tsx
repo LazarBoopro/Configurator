@@ -6,43 +6,41 @@ import useTextures from "../../hooks/useTextures.hook";
 type GLTFResult = GLTF & {
   nodes: {
     Zid: THREE.Mesh;
-    Floor: THREE.Mesh;
-    Stub009: THREE.Mesh;
-    Stub008: THREE.Mesh;
+    LeviStub: THREE.Mesh;
+    LeviStubCap: THREE.Mesh;
+    DesniStubCap: THREE.Mesh;
+    DesniStub: THREE.Mesh;
+    Vrh: THREE.Mesh;
+    postolje: THREE.Mesh;
     Zid001: THREE.Mesh;
-    Stub001: THREE.Mesh;
-    Stub002: THREE.Mesh;
+    Vrh001: THREE.Mesh;
+    postolje001: THREE.Mesh;
+    LeviStubCap001: THREE.Mesh;
+    LeviStub001: THREE.Mesh;
     Zid002: THREE.Mesh;
+    Vrh002: THREE.Mesh;
+    postolje002: THREE.Mesh;
+    LeviStubCap002: THREE.Mesh;
+    LeviStub002: THREE.Mesh;
     Zid003: THREE.Mesh;
-    Stub003: THREE.Mesh;
-    Stub004: THREE.Mesh;
-    Stub005: THREE.Mesh;
-    Stub006: THREE.Mesh;
-    Zid004: THREE.Mesh;
-    Stub007: THREE.Mesh;
-    Stub010: THREE.Mesh;
+    Vrh003: THREE.Mesh;
+    postolje003: THREE.Mesh;
+    LeviStubCap003: THREE.Mesh;
+    LeviStub003: THREE.Mesh;
+    Plane: THREE.Mesh;
   };
   materials: {
     Material: THREE.MeshStandardMaterial;
-    ["Material.018"]: THREE.MeshStandardMaterial;
-    ["Material.017"]: THREE.MeshStandardMaterial;
-    ["Material.006"]: THREE.MeshStandardMaterial;
-    ["Material.007"]: THREE.MeshStandardMaterial;
-    ["Material.008"]: THREE.MeshStandardMaterial;
-    ["Material.009"]: THREE.MeshStandardMaterial;
-    ["Material.010"]: THREE.MeshStandardMaterial;
-    ["Material.011"]: THREE.MeshStandardMaterial;
-    ["Material.012"]: THREE.MeshStandardMaterial;
-    ["Material.013"]: THREE.MeshStandardMaterial;
-    ["Material.014"]: THREE.MeshStandardMaterial;
-    ["Material.015"]: THREE.MeshStandardMaterial;
-    ["Material.016"]: THREE.MeshStandardMaterial;
-    ["Material.019"]: THREE.MeshStandardMaterial;
+    ["Material.001"]: THREE.MeshStandardMaterial;
+    ["Material.002"]: THREE.MeshStandardMaterial;
+    ["Material.003"]: THREE.MeshStandardMaterial;
   };
 };
 
-export function Model(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/models/fenceFinal.glb") as GLTFResult;
+export function Model1(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(
+    "/models/fenceWidthFloor.glb"
+  ) as GLTFResult;
 
   const { selectedTexturePillar, selectedTextureWall, floor } = useTextures();
 
@@ -53,27 +51,22 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
         receiveShadow
         geometry={nodes.Zid.geometry}
         material={materials.Material}
-        position={[1.7078, -0.0205, 0]}
-        scale={[0.6731, 1, 0.3956]}
+        position={[1.549, 0.415, 0]}
+        scale={[1, 1, 2.376]}
       >
-        <meshStandardMaterial roughness={0.5} {...selectedTextureWall} />
+        <meshStandardMaterial
+          roughness={1}
+          side={THREE.DoubleSide}
+          metalness={0}
+          {...selectedTextureWall}
+        />
       </mesh>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Floor.geometry}
-        material={nodes.Floor.material}
-        position={[0, -0.4221, 0.9048]}
-        scale={[3.5714, 1, 1.2968]}
-      >
-        <meshStandardMaterial {...floor} />
-      </mesh>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Stub009.geometry}
-        material={materials["Material.018"]}
-        position={[2.3991, 0.0167, 0]}
+        geometry={nodes.LeviStub.geometry}
+        material={materials.Material}
+        position={[1.03, 0.432, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -84,11 +77,61 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Stub008.geometry}
-        material={materials["Material.017"]}
-        position={[1.7096, 0.4024, 0]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[0.2897, 1.5088, 0.4828]}
+        geometry={nodes.LeviStubCap.geometry}
+        material={materials.Material}
+        position={[1.03, 0.432, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.DesniStubCap.geometry}
+        material={materials.Material}
+        position={[2.059, 0.432, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.DesniStub.geometry}
+        material={materials.Material}
+        position={[2.059, 0.432, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Vrh.geometry}
+        material={materials.Material}
+        position={[1.547, 0.8, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.postolje.geometry}
+        material={materials.Material}
+        position={[1.547, 0.006, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -100,19 +143,23 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
         castShadow
         receiveShadow
         geometry={nodes.Zid001.geometry}
-        material={materials["Material.006"]}
-        position={[0.2922, -0.0205, 0]}
-        scale={[0.6731, 1, 0.3956]}
+        material={materials["Material.001"]}
+        position={[0.523, 0.415, 0]}
+        scale={[1, 1, 2.376]}
       >
-        <meshStandardMaterial roughness={0.5} {...selectedTextureWall} />
+        <meshStandardMaterial
+          roughness={1}
+          side={THREE.DoubleSide}
+          metalness={0}
+          {...selectedTextureWall}
+        />
       </mesh>
-      {/* ORIGINAl PILL */}
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Stub001.geometry}
-        material={materials["Material.007"]}
-        position={[0.9835, 0.0167, 0]}
+        geometry={nodes.Vrh001.geometry}
+        material={materials["Material.001"]}
+        position={[0.521, 0.8, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -123,11 +170,35 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Stub002.geometry}
-        material={materials["Material.008"]}
-        position={[0.294, 0.4024, 0]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[0.2897, 1.5088, 0.4828]}
+        geometry={nodes.postolje001.geometry}
+        material={materials["Material.001"]}
+        position={[0.521, 0.006, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.LeviStubCap001.geometry}
+        material={materials["Material.001"]}
+        position={[0.005, 0.432, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.LeviStub001.geometry}
+        material={materials["Material.001"]}
+        position={[0.005, 0.432, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -139,28 +210,90 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
         castShadow
         receiveShadow
         geometry={nodes.Zid002.geometry}
-        material={materials["Material.009"]}
-        position={[-2.5136, -0.0205, 0]}
-        scale={[0.6731, 1, 0.3956]}
+        material={materials["Material.002"]}
+        position={[-0.522, 0.415, 0]}
+        scale={[1, 1, 2.376]}
       >
-        <meshStandardMaterial roughness={0.5} {...selectedTextureWall} />
+        <meshStandardMaterial
+          roughness={1}
+          side={THREE.DoubleSide}
+          metalness={0}
+          {...selectedTextureWall}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Vrh002.geometry}
+        material={materials["Material.002"]}
+        position={[-0.521, 0.8, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.postolje002.geometry}
+        material={materials["Material.002"]}
+        position={[-0.524, 0.006, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.LeviStubCap002.geometry}
+        material={materials["Material.002"]}
+        position={[-1.04, 0.432, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.LeviStub002.geometry}
+        material={materials["Material.002"]}
+        position={[-1.04, 0.432, 0]}
+      >
+        <meshStandardMaterial
+          roughness={4}
+          metalness={0}
+          {...selectedTexturePillar}
+        />
       </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.Zid003.geometry}
-        material={materials["Material.010"]}
-        position={[-1.0981, -0.0205, 0]}
-        scale={[0.6731, 1, 0.3956]}
+        material={materials["Material.003"]}
+        position={[-1.56, 0.415, 0]}
+        scale={[1, 1, 2.376]}
       >
-        <meshStandardMaterial roughness={0.5} {...selectedTextureWall} />
+        <meshStandardMaterial
+          roughness={1}
+          side={THREE.DoubleSide}
+          metalness={0}
+          {...selectedTextureWall}
+        />
       </mesh>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Stub003.geometry}
-        material={materials["Material.011"]}
-        position={[-0.4068, 0.0167, 0]}
+        geometry={nodes.Vrh003.geometry}
+        material={materials["Material.003"]}
+        position={[-1.563, 0.8, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -171,11 +304,9 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Stub004.geometry}
-        material={materials["Material.012"]}
-        position={[-1.0962, 0.4024, 0]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[0.2897, 1.5088, 0.4828]}
+        geometry={nodes.postolje003.geometry}
+        material={materials["Material.003"]}
+        position={[-1.563, 0.006, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -186,11 +317,9 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Stub005.geometry}
-        material={materials["Material.013"]}
-        position={[-2.5118, 0.4024, 0]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[0.2897, 1.5088, 0.4828]}
+        geometry={nodes.LeviStubCap003.geometry}
+        material={materials["Material.003"]}
+        position={[-2.079, 0.432, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -201,9 +330,9 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Stub006.geometry}
-        material={materials["Material.014"]}
-        position={[-1.8223, 0.0167, 0]}
+        geometry={nodes.LeviStub003.geometry}
+        material={materials["Material.003"]}
+        position={[-2.079, 0.432, 0]}
       >
         <meshStandardMaterial
           roughness={4}
@@ -214,43 +343,15 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Zid004.geometry}
-        material={materials["Material.015"]}
-        position={[3.0493, -0.0205, 0]}
-        scale={[0.6731, 1, 0.3956]}
+        geometry={nodes.Plane.geometry}
+        material={nodes.Plane.material}
+        position={[0.015, -0.012, 0.518]}
+        scale={[2.972, 1, 0.945]}
       >
-        <meshStandardMaterial roughness={0.5} {...selectedTextureWall} />
-      </mesh>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Stub007.geometry}
-        material={materials["Material.016"]}
-        position={[3.7405, 0.0167, 0]}
-      >
-        <meshStandardMaterial
-          roughness={4}
-          metalness={0}
-          {...selectedTexturePillar}
-        />
-      </mesh>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Stub010.geometry}
-        material={materials["Material.019"]}
-        position={[3.0511, 0.4024, 0]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[0.2897, 1.5088, 0.4828]}
-      >
-        <meshStandardMaterial
-          roughness={4}
-          metalness={0}
-          {...selectedTexturePillar}
-        />
+        <meshStandardMaterial roughness={4} metalness={0} {...floor} />
       </mesh>
     </group>
   );
 }
 
-useGLTF.preload("/models/fenceFinal.glb");
+useGLTF.preload("/models/fenceWidthFloor.glb");

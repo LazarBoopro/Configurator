@@ -34,11 +34,15 @@ export const ValuesProvider: React.FC<ValuesProviderProps> = ({ children }) => {
 
   const [texture, setTexture] = useState({
     wall: "wood_1",
-    pillars: "pillars_1",
+    pillars: "metal_1",
   });
 
+  const [scene, setScene] = useState(0);
+
   return (
-    <ValuesContext.Provider value={{ values, setValues, texture, setTexture }}>
+    <ValuesContext.Provider
+      value={{ values, setValues, texture, setTexture, scene, setScene }}
+    >
       {children}
     </ValuesContext.Provider>
   );

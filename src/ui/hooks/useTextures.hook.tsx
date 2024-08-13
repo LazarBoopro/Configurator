@@ -120,67 +120,16 @@ export default function useTextures() {
     metal2TextureScale.y
   );
 
-  // WOOD TEXTURE #1
-  const wood1TextureScale = { x: 5, y: 6 };
-  const wood1TextureOffset = { x: 0, y: 0 };
-
-  const wood1Texture = useTexture({
-    map: "/textures/wood_1/wood_basecolor.jpg",
-    normalMap: "/textures/wood_1/wood_normal.jpg",
-    height: "/textures/wood_1/wood_height.png",
-    aoMap: "/textures/wood_1/wood_ambientOcclusion.jpg",
-    roughnessMap: "/textures/wood_1/wood_roughness.jpg",
-  });
-
-  wood1Texture.aoMap.wrapS =
-    wood1Texture.map.wrapS =
-    wood1Texture.height.wrapS =
-    wood1Texture.normalMap.wrapS =
-    wood1Texture.roughnessMap.wrapS =
-      THREE.RepeatWrapping;
-
-  wood1Texture.aoMap.wrapT =
-    wood1Texture.map.wrapT =
-    wood1Texture.height.wrapT =
-    wood1Texture.normalMap.wrapT =
-    wood1Texture.roughnessMap.wrapT =
-      THREE.RepeatWrapping;
-
-  wood1Texture.aoMap.rotation =
-    wood1Texture.map.rotation =
-    wood1Texture.height.rotation =
-    wood1Texture.normalMap.rotation =
-    wood1Texture.roughnessMap.rotation =
-      Math.PI / 2;
-
-  wood1Texture.aoMap.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
-  wood1Texture.map.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
-  wood1Texture.height.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
-  wood1Texture.normalMap.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
-  wood1Texture.roughnessMap.offset.set(
-    wood1TextureOffset.x,
-    wood1TextureOffset.y
-  );
-
-  wood1Texture.aoMap.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
-  wood1Texture.map.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
-  wood1Texture.height.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
-  wood1Texture.normalMap.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
-  wood1Texture.roughnessMap.repeat.set(
-    wood1TextureScale.x,
-    wood1TextureScale.y
-  );
-
   // WOOD TEXTURE #2
-  const wood2TextureScale = { x: -8.15, y: 4 };
+  const wood2TextureScale = { x: -6, y: 12 };
   const wood2TextureOffset = { x: 0, y: 0 };
 
   const wood2Texture = useTexture({
-    map: `/textures/${texture.wall ?? "wood_2"}/wood_basecolor.jpg`,
-    normalMap: "/textures/wood_2/wood_NORM.jpg",
-    height: "/textures/wood_2/wood_DISP.png",
-    aoMap: "/textures/wood_2/wood_OCC.jpg",
-    roughnessMap: "/textures/wood_2/wood_ROUGH.jpg",
+    map: `/textures/${texture.wall ?? "wood_4"}/wood_basecolor.jpg`,
+    normalMap: "/textures/wood_4/wood_normal.jpg",
+    height: "/textures/wood_4/wood_height.jpg",
+    aoMap: "/textures/wood_4/wood_ambientOcclusion.jpg",
+    roughnessMap: "/textures/wood_4/wood_height.jpg",
   });
 
   wood2Texture.aoMap.wrapS =
@@ -220,6 +169,57 @@ export default function useTextures() {
   wood2Texture.roughnessMap.repeat.set(
     wood2TextureScale.x,
     wood2TextureScale.y
+  );
+
+  // WOOD TEXTURE #1
+  const wood1TextureScale = { x: -6, y: 8 };
+  const wood1TextureOffset = { x: 0, y: 0 };
+
+  const wood1Texture = useTexture({
+    map: `/textures/${texture.wall ?? "wood_1"}/wood_basecolor.jpg`,
+    normalMap: "/textures/wood_1/wood_NORM.jpg",
+    height: "/textures/wood_1/wood_DISP.png",
+    aoMap: "/textures/wood_1/wood_OCC.jpg",
+    roughnessMap: "/textures/wood_1/wood_ROUGH.jpg",
+  });
+
+  wood1Texture.aoMap.wrapS =
+    wood1Texture.map.wrapS =
+    wood1Texture.height.wrapS =
+    wood1Texture.normalMap.wrapS =
+    wood1Texture.roughnessMap.wrapS =
+      THREE.RepeatWrapping;
+
+  wood1Texture.aoMap.wrapT =
+    wood1Texture.map.wrapT =
+    wood1Texture.height.wrapT =
+    wood1Texture.normalMap.wrapT =
+    wood1Texture.roughnessMap.wrapT =
+      THREE.RepeatWrapping;
+
+  wood1Texture.aoMap.rotation =
+    wood1Texture.map.rotation =
+    wood1Texture.height.rotation =
+    wood1Texture.normalMap.rotation =
+    wood1Texture.roughnessMap.rotation =
+      0;
+
+  wood1Texture.aoMap.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
+  wood1Texture.map.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
+  wood1Texture.height.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
+  wood1Texture.normalMap.offset.set(wood1TextureOffset.x, wood1TextureOffset.y);
+  wood1Texture.roughnessMap.offset.set(
+    wood1TextureOffset.x,
+    wood1TextureOffset.y
+  );
+
+  wood1Texture.aoMap.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
+  wood1Texture.map.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
+  wood1Texture.height.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
+  wood1Texture.normalMap.repeat.set(wood1TextureScale.x, wood1TextureScale.y);
+  wood1Texture.roughnessMap.repeat.set(
+    wood1TextureScale.x,
+    wood1TextureScale.y
   );
 
   // FLOOR TEXTURE
@@ -274,11 +274,14 @@ export default function useTextures() {
   useEffect(() => {
     switch (texture.wall) {
       case "wood_1":
-        setSelectedTextureWall(wood1Texture);
-        break;
       case "wood_2":
       case "wood_3":
+        setSelectedTextureWall(wood1Texture);
+        break;
+
       case "wood_4":
+      case "wood_5":
+      case "wood_6":
         setSelectedTextureWall(wood2Texture);
         break;
 
