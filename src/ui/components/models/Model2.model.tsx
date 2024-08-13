@@ -23,7 +23,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
     "/models/fenceStageScenev2.1.glb"
   ) as GLTFResult;
 
-  const { selectedTexturePillar, selectedTextureWall, floor } = useTextures();
+  const { selectedTexturePillar, selectedTextureWall } = useTextures();
 
   return (
     <group {...props} dispose={null}>
