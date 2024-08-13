@@ -37,7 +37,7 @@ type GLTFResult = GLTF & {
   };
 };
 
-export function Model1(props: JSX.IntrinsicElements["group"]) {
+export default function Model1(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
     "/models/fenceWidthFloor.glb"
   ) as GLTFResult;
