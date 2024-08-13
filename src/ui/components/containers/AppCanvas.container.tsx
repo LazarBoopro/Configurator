@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { easing } from "maath";
 import {
   Center,
@@ -12,8 +12,8 @@ import { ErrorBoundary } from "react-error-boundary";
 
 import { useValues } from "../../../context/FormValuesContext";
 
-import { Model } from "../models/Model2.model";
-import { Model1 } from "../models/Model.model";
+const Model1 = React.lazy(() => import("../models/Model.model"));
+const Model = React.lazy(() => import("../models/Model2.model"));
 
 import "../../styles/containers/appCanvas.container.scss";
 
