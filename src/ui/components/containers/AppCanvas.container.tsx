@@ -8,7 +8,6 @@ import {
   Stage,
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { ErrorBoundary } from "react-error-boundary";
 
 import { useValues } from "../../../context/FormValuesContext";
 
@@ -25,20 +24,52 @@ export default function AppCanvas() {
 
   return (
     <div className="three-canvas">
-      {scene === 0 ? <StageModel /> : <SceneModel />}
+      <Canvas
+        gl={{ antialias: true }}
+        dpr={[1, 2]}
+        shadows
+        camera={{ fov: 45 }}
+      >
+        {scene === 0 ? (
+          <Suspense fallback={null}>
+            <StageModel />
+          </Suspense>
+        ) : (
+          <Suspense fallback={null}>
+            <SceneModel />
+          </Suspense>
+        )}
+      </Canvas>
     </div>
   );
 }
 
 function Lights() {
-  return (
+  const { scene } = useValues();
+  return scene === 1 ? (
     <>
+      <Environment preset="apartment" environmentIntensity={0.15} />
+      <ambientLight intensity={0.25} />
       <Sky rayleigh={0.3} azimuth={100} distance={100} />
-      <Environment preset="city" blur={1} environmentIntensity={0.5} />
-      {/* <ambientLight intensity={0.5} /> */}
-      <pointLight intensity={2} decay={2} position={[-2, 0, 2]} />
-      <pointLight intensity={5} decay={3} position={[-0.5, 0.2, 3.5]} />
-      <pointLight intensity={1} decay={2} position={[0.4, 1, 1.5]} />
+      <pointLight intensity={0.25} decay={2} position={[-1.5, 0.25, 1]} />
+      <pointLight intensity={0.25} decay={2} position={[-0.5, 0.2, 1]} />
+      <pointLight intensity={8} decay={2} position={[1.4, 1, 1.5]} />
+    </>
+  ) : (
+    <>
+      <pointLight
+        intensity={0.05}
+        decay={2}
+        color={"white"}
+        position={[0.5, 0.5, 0.5]}
+      />
+      <pointLight
+        intensity={20}
+        decay={0}
+        color={"white"}
+        position={[0, 0, 0]}
+      />
+      <pointLight intensity={0.5} decay={2} position={[1, 0, 2]} />
     </>
   );
 }
@@ -78,29 +109,16 @@ function CameraRig({ children }: { children: React.ReactNode }) {
 
 const StageModel = () => {
   return (
-    <Canvas gl={{ antialias: true }} dpr={[1, 2]} shadows camera={{ fov: 45 }}>
+    <>
       <color attach={"background"} args={["#fff"]} />
       <fog attach={"fog"} args={["#fff", 0, 30]} />
 
       <Suspense fallback={null}>
         <CameraRig>
-          <pointLight
-            intensity={0.05}
-            decay={2}
-            color={"white"}
-            position={[0.5, 0.5, 0.5]}
-          />
-          <pointLight
-            intensity={1}
-            decay={0}
-            color={"white"}
-            position={[0.25, 0.5, 0.5]}
-          />
-          <pointLight intensity={0.5} decay={2} position={[1, 0, 2]} />
           <Stage
             shadows
             adjustCamera
-            intensity={0.5}
+            intensity={5}
             environment="city"
             preset="portrait"
           >
@@ -125,25 +143,16 @@ const StageModel = () => {
           </mesh>
         </CameraRig>
       </Suspense>
-    </Canvas>
+    </>
   );
 };
 
 const SceneModel = () => {
   return (
-    <Canvas dpr={[1, 2]} shadows>
-      <ErrorBoundary
-        fallback={
-          <mesh>
-            <sphereGeometry />
-          </mesh>
-        }
-      >
-        <CameraRig>
-          <Lights />
-          <Model1 scale={0.75} position={[0, -0.2, 0.8]} />
-        </CameraRig>
-      </ErrorBoundary>
-    </Canvas>
+    <CameraRig>
+      <Lights />
+
+      <Model1 position={[0, -0.45, 0]} />
+    </CameraRig>
   );
 };

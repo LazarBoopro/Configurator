@@ -230,6 +230,7 @@ export default function Model1(props: JSX.IntrinsicElements["group"]) {
       >
         <meshStandardMaterial
           roughness={4}
+          side={THREE.DoubleSide}
           metalness={0}
           {...selectedTexturePillar}
         />
