@@ -10,9 +10,9 @@ export const CheckIcon = () => {
             <path
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="32"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="32"
                 d="M416 128L192 384l-96-96"
             />
         </svg>
