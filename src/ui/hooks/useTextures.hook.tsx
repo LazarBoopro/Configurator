@@ -2,6 +2,7 @@ import { useTexture } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import * as THREE from "three";
 import { useValues } from "../../context/FormValuesContext";
+import { PillarsTypeEnum, WallTypeEnum } from "../../interfaces/interfaces";
 
 export default function useTextures() {
     const { values } = useValues();
@@ -236,15 +237,15 @@ export default function useTextures() {
 
     useEffect(() => {
         switch (values.wall) {
-            case "wood_1":
-            case "wood_2":
-            case "wood_3":
+            case WallTypeEnum.WOOD_1:
+            case WallTypeEnum.WOOD_2:
+            case WallTypeEnum.WOOD_3:
                 setSelectedTextureWall(wood1Texture);
                 break;
 
-            case "wood_4":
-            case "wood_5":
-            case "wood_6":
+            case WallTypeEnum.ORIGINAL_1:
+            case WallTypeEnum.ORIGINAL_2:
+            case WallTypeEnum.ORIGINAL_3:
                 setSelectedTextureWall(wood2Texture);
                 break;
 
@@ -255,10 +256,7 @@ export default function useTextures() {
 
     useEffect(() => {
         switch (values.pillars) {
-            case "metal_1":
-                setSelectedTexturePillar(metal1Texture);
-                break;
-            case "metal_2":
+            case PillarsTypeEnum.ALUMINIUM:
                 setSelectedTexturePillar(metal2Texture);
                 break;
             default:
