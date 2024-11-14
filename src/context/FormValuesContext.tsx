@@ -19,8 +19,8 @@ const ValuesContext = createContext<
           setValues: React.Dispatch<React.SetStateAction<ValuesType>>;
           scene: number;
           setScene: React.Dispatch<React.SetStateAction<number>>;
-          total: TotalPriceType;
-          setTotal: React.Dispatch<React.SetStateAction<TotalPriceType>>;
+          total: TotalPriceType | null;
+          setTotal: React.Dispatch<React.SetStateAction<TotalPriceType | null>>;
       }
     | undefined
 >(undefined);
@@ -28,7 +28,7 @@ const ValuesContext = createContext<
 // Create the provider component
 export const ValuesProvider: React.FC<ValuesProviderProps> = ({ children }) => {
     const [values, setValues] = useState<ValuesType>({
-        pillars: PillarsTypeEnum.CEMENT,
+        pillars: PillarsTypeEnum.ALUMINIUM,
         wall: WallTypeEnum.WOOD_1,
         application: "Bez aplikacije",
         height: 45,
@@ -36,7 +36,7 @@ export const ValuesProvider: React.FC<ValuesProviderProps> = ({ children }) => {
     });
 
     const [scene, setScene] = useState(0);
-    const [total, setTotal] = useState<any>({});
+    const [total, setTotal] = useState<TotalPriceType | null>(null);
 
     return (
         <ValuesContext.Provider value={{ values, setValues, scene, setScene, total, setTotal }}>

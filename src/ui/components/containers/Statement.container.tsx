@@ -9,7 +9,7 @@ const Statement = () => {
 
     return (
         <div className="statement-main">
-            <h1>Obracun</h1>
+            <h1>Obračun</h1>
             <div className="divider" />
             <div className="grid-cont">
                 <div className="pill">
@@ -22,9 +22,15 @@ const Statement = () => {
                 </div>
                 <div className="pill">
                     <Text color="primary" variant="info">
-                        Zid:
+                        Decking / ispuna:
                     </Text>
                     <Text variant="info">{prices[values.wall as keyof AllPricesType].element}</Text>
+                </div>
+                <div className="pill">
+                    <Text color="primary" variant="info">
+                        Broj polja:
+                    </Text>
+                    <Text variant="info">{`${(total?.[values.pillars]?.amount ?? 1) - 1}`}</Text>
                 </div>
 
                 <div className="pill">
@@ -35,7 +41,7 @@ const Statement = () => {
                 </div>
                 <div className="pill">
                     <Text color="primary" variant="info">
-                        Duzina:
+                        Dužina:
                     </Text>
                     <Text variant="info">{`${values.length} m`}</Text>
                 </div>
@@ -51,51 +57,34 @@ const Statement = () => {
                     </tr>
                 </thead>
                 <tbody className="body">
-                    {Object.keys(total).map((key) => (
-                        <tr className="row" key={key}>
-                            <td className="cell">{prices[key as keyof typeof prices].element}</td>
-                            <td className="cell">{total[key].amount}</td>
-                            <td className="cell">{prices[key as keyof typeof prices].unit}</td>
-                            <td className="cell">{prices[key as keyof typeof prices].price}</td>
-                            <td className="cell">
-                                {prices[key as keyof typeof prices].price * total[key].amount}
-                            </td>
-                        </tr>
-                    ))}
+                    {total &&
+                        Object.keys(total).map((key) => (
+                            <tr className="row" key={key}>
+                                <td className="cell">
+                                    {prices[key as keyof typeof prices].element}
+                                </td>
+                                <td className="cell">{total[key as keyof typeof total]?.amount}</td>
+                                <td className="cell">{prices[key as keyof typeof prices].unit}</td>
+                                <td className="cell">{prices[key as keyof typeof prices].price}</td>
+                                <td className="cell">
+                                    {prices[key as keyof typeof prices].price *
+                                        total[key as keyof typeof total]!.amount}
+                                </td>
+                            </tr>
+                        ))}
 
                     <tr className="total-row">
                         <td colSpan={4}>Ukupno</td>
                         <td>
-                            {Math.round(
-                                Object.values(total).reduce(
-                                    (acc, curr) => acc + curr.totalPrice,
-                                    0
-                                ) * 100
-                            ) / 100}{" "}
+                            {total &&
+                                Math.round(
+                                    Object.values(total).reduce(
+                                        (acc, curr) => acc + curr.totalPrice,
+                                        0
+                                    ) * 100
+                                ) / 100}
                             €
                         </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <table className="table">
-                <tbody className="body">
-                    <tr className="row">
-                        <td className="cell">Montaza stubova</td>
-                        <td className="cell">/</td>
-                    </tr>
-                    <tr className="row">
-                        <td className="cell">Montaza ispune</td>
-                        <td className="cell">/</td>
-                    </tr>
-                    <tr className="row">
-                        <td className="cell">Montaza lajsni</td>
-                        <td className="cell">/</td>
-                    </tr>
-
-                    <tr className="total-row">
-                        <td>Ukupno</td>
-                        <td>123 €</td>
                     </tr>
                 </tbody>
             </table>
