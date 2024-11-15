@@ -32,7 +32,7 @@ export const ValuesProvider: React.FC<ValuesProviderProps> = ({ children }) => {
         wall: WallTypeEnum.WOOD_1,
         application: "Bez aplikacije",
         height: 45,
-        length: 0,
+        length: 0.9,
     });
 
     const [scene, setScene] = useState(0);

@@ -41,13 +41,20 @@ const Form = () => {
 
         let decksTotal = 0;
 
-        if (lastFieldLength < 0.45) {
+        if (lastFieldLength <= 0.45) {
             decksTotal = (fieldsCount - 1) * decksInFieldCount + Math.ceil(decksInFieldCount / 4);
-        } else if (lastFieldLength < 0.9) {
+        } else if (lastFieldLength <= 0.9) {
             decksTotal = (fieldsCount - 1) * decksInFieldCount + Math.ceil(decksInFieldCount / 2);
         } else {
             decksTotal = fieldsCount * decksInFieldCount;
         }
+
+        console.log({
+            fieldsCount,
+            decksInFieldCount,
+            lastFieldLength,
+            decksTotal,
+        });
 
         const totalMaterial: TotalPriceType = {
             [values.wall]: {
@@ -276,6 +283,7 @@ const Form = () => {
                     label="Dužina (m)"
                     type="number"
                     defaultValue={values.length}
+                    minValue={0.9}
                 />
             </div>
 

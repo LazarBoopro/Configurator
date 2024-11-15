@@ -2,7 +2,6 @@
 export interface ValuesType {
     pillars: PillarsTypeEnum;
     wall: WallTypeEnum;
-    application: string;
     height: number;
     length: number;
 }
