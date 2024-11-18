@@ -1,6 +1,13 @@
 @import "variables.scss";
 
+.submit-buttons {
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
 .statement-main {
+  padding: 1rem;
+
   .divider {
     height: 1px;
     background-color: $light-gray-clr;
@@ -19,13 +26,20 @@
     padding: 1rem;
     display: flex;
     gap: 1rem;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    p:last-child {
+      font-weight: 500;
+    }
   }
 
   .table {
     width: 100%;
     margin-top: 1rem;
     border-collapse: collapse;
-    padding: 1rem;
+    // padding: 1rem;
+    overflow-x: auto;
 
     .head {
       font-weight: 600;
@@ -81,6 +95,18 @@
           text-align: end;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .statement-main {
+    .grid-cont {
+      flex-direction: column;
+    }
+
+    .table {
+      display: block;
     }
   }
 }
