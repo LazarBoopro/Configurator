@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { RefObject, useEffect, useState } from "react";
-import rotateIcon from "../../../../public/images/rotate-3d.png";
 
 export default function CanvasCursor({
   canvasRef,
