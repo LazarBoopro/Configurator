@@ -2,6 +2,7 @@
 
 .submit-buttons {
   padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 .statement-main {
@@ -37,7 +38,8 @@
     width: 100%;
     margin-top: 1rem;
     border-collapse: collapse;
-    padding: 1rem;
+    // padding: 1rem;
+    overflow-x: auto;
 
     .head {
       font-weight: 600;
@@ -101,6 +103,10 @@
   .statement-main {
     .grid-cont {
       flex-direction: column;
+    }
+
+    .table {
+      display: block;
     }
   }
 }

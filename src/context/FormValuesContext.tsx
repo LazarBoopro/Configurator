@@ -6,6 +6,7 @@ import {
     ValuesType,
     WallTypeEnum,
 } from "../interfaces/interfaces";
+import { totalPriceDefault } from "../helpers/constants";
 
 // Define the type for your context provider props
 interface ValuesProviderProps {
@@ -19,8 +20,8 @@ const ValuesContext = createContext<
           setValues: React.Dispatch<React.SetStateAction<ValuesType>>;
           scene: number;
           setScene: React.Dispatch<React.SetStateAction<number>>;
-          total: TotalPriceType | null;
-          setTotal: React.Dispatch<React.SetStateAction<TotalPriceType | null>>;
+          total: TotalPriceType;
+          setTotal: React.Dispatch<React.SetStateAction<TotalPriceType>>;
       }
     | undefined
 >(undefined);
@@ -35,7 +36,7 @@ export const ValuesProvider: React.FC<ValuesProviderProps> = ({ children }) => {
     });
 
     const [scene, setScene] = useState(0);
-    const [total, setTotal] = useState<TotalPriceType | null>(null);
+    const [total, setTotal] = useState<TotalPriceType>(totalPriceDefault);
 
     return (
         <ValuesContext.Provider value={{ values, setValues, scene, setScene, total, setTotal }}>
