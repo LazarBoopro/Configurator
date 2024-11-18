@@ -1,4 +1,9 @@
-import { AllPricesType, PillarsTypeEnum, WallTypeEnum } from "../interfaces/interfaces";
+import {
+    AllPricesType,
+    PillarsTypeEnum,
+    TotalPriceType,
+    WallTypeEnum,
+} from "../interfaces/interfaces";
 
 export const tableRows = [
     {
@@ -129,3 +134,17 @@ export const heightList = [
     { label: "165 cm", value: 165 },
     { label: "180 cm", value: 180 },
 ];
+
+export const totalPriceDefault: TotalPriceType = {
+    wood_1: { amount: 0.54, totalPrice: 20.52 },
+    aluminium_pillar: { amount: 2, totalPrice: 80 },
+    aluminium_molding: { amount: 4, totalPrice: 14 },
+    start_aluminium_molding: { amount: 1, totalPrice: 8 },
+    end_aluminium_molding: { amount: 1, totalPrice: 8 },
+    plastic_cap: { amount: 2, totalPrice: 3 },
+    pillar_mask: { amount: 2, totalPrice: 5 },
+    column_foot: { amount: 2, totalPrice: 20 },
+    anchor: { amount: 8, totalPrice: 8 },
+    screw: { amount: 8, totalPrice: 4 },
+    winkle: { amount: 2, totalPrice: 2.4 },
+};

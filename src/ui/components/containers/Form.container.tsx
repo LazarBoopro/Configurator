@@ -2,6 +2,7 @@ import Input from "../atoms/Input.atom";
 import Select from "../atoms/Select.atom";
 import Text from "../atoms/Text.atom";
 
+import { useState } from "react";
 import { useValues } from "../../../context/FormValuesContext";
 import {
     AllPricesType,
@@ -28,6 +29,7 @@ const roundNumber = (num: number) => {
 };
 const Form = () => {
     const { values, setValues, scene, setScene, setTotal } = useValues();
+    const [error, setError] = useState(false);
 
     const calculateTotalPrice = (values: ValuesType) => {
         const deckDim = 0.27;
@@ -60,7 +62,7 @@ const Form = () => {
             [values.wall]: {
                 amount: deckDim * decksTotal,
                 totalPrice: roundNumber(
-                    prices[values.wall as keyof typeof prices].price * decksInFieldCount * deckDim
+                    prices[values.wall as keyof typeof prices].price * decksTotal * deckDim
                 ),
             },
             [values.pillars]: {
@@ -278,13 +280,22 @@ const Form = () => {
             <div>
                 <Input
                     onChange={(e) => {
-                        onChange(parseFloat(e.target.value), "length");
+                        const length = e.target.value ? parseFloat(e.target.value) : 0;
+
+                        onChange(length, "length");
+
+                        length < 0.9 ? setError(true) : setError(false);
                     }}
                     label="Dužina (m)"
                     type="number"
                     defaultValue={values.length}
                     minValue={0.9}
                 />
+                {error && (
+                    <Text variant="info" color="red">
+                        Minimalna dužina je 0.9m
+                    </Text>
+                )}
             </div>
 
             <div>
