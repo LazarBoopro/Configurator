@@ -10,6 +10,7 @@ type InputProps = {
     defaultValue?: string | number;
     minValue?: number;
 };
+
 const Input = ({ onChange, type, label, name, selected, defaultValue, minValue }: InputProps) => {
     return (
         <div className={`input-container ${type === "radio" ? "radio" : ""}`}>
