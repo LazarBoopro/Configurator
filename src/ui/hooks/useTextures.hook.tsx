@@ -57,11 +57,11 @@ export default function useTextures() {
     const metal2TextureOffset = { x: 0, y: 0 };
 
     const metal2Texture = useTexture({
-        map: "/textures/metal_2/metal_basecolor.jpg",
-        normalMap: "/textures/metal_2/metal_normal.jpg",
-        height: "/textures/metal_2/metal_height.jpg",
-        aoMap: "/textures/metal_2/metal_ambientOcclusion.jpg",
-        roughnessMap: "/textures/metal_2/metal_roughness.jpg",
+        map: "/textures/aluminium_pillar/metal_basecolor.jpg",
+        normalMap: "/textures/aluminium_pillar/metal_normal.jpg",
+        height: "/textures/aluminium_pillar/metal_height.jpg",
+        aoMap: "/textures/aluminium_pillar/metal_ambientOcclusion.jpg",
+        roughnessMap: "/textures/aluminium_pillar/metal_roughness.jpg",
     });
 
     metal2Texture.aoMap.wrapS =
@@ -98,15 +98,15 @@ export default function useTextures() {
     metal2Texture.roughnessMap.repeat.set(metal2TextureScale.x, metal2TextureScale.y);
 
     // WOOD TEXTURE #2
-    const wood2TextureScale = { x: -6, y: 12 };
+    const wood2TextureScale = { x: -4, y: 0 };
     const wood2TextureOffset = { x: 0, y: 0 };
 
     const wood2Texture = useTexture({
-        map: `/textures/${values.wall ?? "wood_4"}/wood_basecolor.jpg`,
-        normalMap: "/textures/wood_4/wood_normal.jpg",
-        height: "/textures/wood_4/wood_height.jpg",
-        aoMap: "/textures/wood_4/wood_ambientOcclusion.jpg",
-        roughnessMap: "/textures/wood_4/wood_height.jpg",
+        map: `/textures/${values.wall ?? "original_1"}/wood_basecolor.jpg`,
+        normalMap: "/textures/original_1/wood_normal.jpg",
+        height: "/textures/original_1/wood_height.jpg",
+        aoMap: "/textures/original_1/wood_ambientOcclusion.jpg",
+        roughnessMap: "/textures/original_1/wood_height.jpg",
     });
 
     wood2Texture.aoMap.wrapS =
@@ -143,8 +143,8 @@ export default function useTextures() {
     wood2Texture.roughnessMap.repeat.set(wood2TextureScale.x, wood2TextureScale.y);
 
     // WOOD TEXTURE #1
-    const wood1TextureScale = { x: -6, y: 8 };
-    const wood1TextureOffset = { x: 0, y: 0 };
+    const wood1TextureScale = { x: -5, y: 5 };
+    const wood1TextureOffset = { x: 150, y: 150 };
 
     const wood1Texture = useTexture({
         map: `/textures/${values.wall ?? "wood_1"}/wood_basecolor.jpg`,

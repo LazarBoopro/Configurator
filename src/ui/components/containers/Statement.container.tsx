@@ -67,8 +67,10 @@ const Statement = () => {
                                 <td className="cell">{prices[key as keyof typeof prices].unit}</td>
                                 <td className="cell">{prices[key as keyof typeof prices].price}</td>
                                 <td className="cell">
-                                    {prices[key as keyof typeof prices].price *
-                                        total[key as keyof typeof total]!.amount}
+                                    {(
+                                        prices[key as keyof typeof prices].price *
+                                        total[key as keyof typeof total]!.amount
+                                    ).toFixed(2)}
                                 </td>
                             </tr>
                         ))}

@@ -15,9 +15,9 @@ import { CheckIcon } from "../atoms/CheckIcon.atom";
 import wood1 from "../../../../public/textures/wood_1/wood_basecolor.jpg";
 import wood2 from "../../../../public/textures/wood_2/wood_basecolor.jpg";
 import wood3 from "../../../../public/textures/wood_3/wood_basecolor.jpg";
-import wood4 from "../../../../public/textures/wood_4/wood_basecolor.jpg";
-import wood5 from "../../../../public/textures/wood_5/wood_basecolor.jpg";
-import wood6 from "../../../../public/textures/wood_6/wood_basecolor.jpg";
+import wood4 from "../../../../public/textures/original_1/wood_basecolor.jpg";
+import wood5 from "../../../../public/textures/original_2/wood_basecolor.jpg";
+import wood6 from "../../../../public/textures/original_3/wood_basecolor.jpg";
 
 import { heightList, prices } from "../../../helpers/constants";
 
@@ -167,7 +167,7 @@ const Form = () => {
                 <div className="options">
                     <Input
                         onChange={() => {
-                            onChange("metal_2", "pillars");
+                            onChange(PillarsTypeEnum.ALUMINIUM, "pillars");
                         }}
                         label="Aluminijumski (crna RAL9004)"
                         type="radio"

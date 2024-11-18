@@ -30,7 +30,6 @@ export const ValuesProvider: React.FC<ValuesProviderProps> = ({ children }) => {
     const [values, setValues] = useState<ValuesType>({
         pillars: PillarsTypeEnum.ALUMINIUM,
         wall: WallTypeEnum.WOOD_1,
-        application: "Bez aplikacije",
         height: 45,
         length: 0.9,
     });
