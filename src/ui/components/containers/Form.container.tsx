@@ -3,79 +3,112 @@ import Select from "../atoms/Select.atom";
 import Text from "../atoms/Text.atom";
 
 import { useValues } from "../../../context/FormValuesContext";
-import { AllPricesType, ValuesType } from "../../../interfaces/interfaces";
+import {
+    AllPricesType,
+    PillarsTypeEnum,
+    TotalPriceType,
+    ValuesType,
+    WallTypeEnum,
+} from "../../../interfaces/interfaces";
 import { CheckIcon } from "../atoms/CheckIcon.atom";
 
 import wood1 from "../../../../public/textures/wood_1/wood_basecolor.jpg";
 import wood2 from "../../../../public/textures/wood_2/wood_basecolor.jpg";
 import wood3 from "../../../../public/textures/wood_3/wood_basecolor.jpg";
-import wood4 from "../../../../public/textures/wood_4/wood_basecolor.jpg";
-import wood5 from "../../../../public/textures/wood_5/wood_basecolor.jpg";
-import wood6 from "../../../../public/textures/wood_6/wood_basecolor.jpg";
+import wood4 from "../../../../public/textures/original_1/wood_basecolor.jpg";
+import wood5 from "../../../../public/textures/original_2/wood_basecolor.jpg";
+import wood6 from "../../../../public/textures/original_3/wood_basecolor.jpg";
+
+import { heightList, prices } from "../../../helpers/constants";
 
 import "../../styles/form.scss";
-import { prices } from "../../../helpers/constants";
 
+const roundNumber = (num: number) => {
+    return Math.round(num * 100) / 100;
+};
 const Form = () => {
     const { values, setValues, scene, setScene, setTotal } = useValues();
 
     const calculateTotalPrice = (values: ValuesType) => {
-        const amount = Math.round(values.height * 0.01 * values.length * 100) / 100;
-        const pillarsCount = Math.floor(values.length / 1.8) + 1;
+        const deckDim = 0.27;
+        const deckHeight = 14;
+        const deckMaxLength = 1.8;
 
-        const totalMaterial = {
+        const pillarsCount = Math.ceil(values.length / 1.8) + 1;
+        const fieldsCount = pillarsCount - 1;
+        const decksInFieldCount = Math.ceil(values.height / deckHeight);
+        const lastFieldLength = values.length - (fieldsCount - 1) * deckMaxLength;
+
+        let decksTotal = 0;
+
+        if (lastFieldLength <= 0.45) {
+            decksTotal = (fieldsCount - 1) * decksInFieldCount + Math.ceil(decksInFieldCount / 4);
+        } else if (lastFieldLength <= 0.9) {
+            decksTotal = (fieldsCount - 1) * decksInFieldCount + Math.ceil(decksInFieldCount / 2);
+        } else {
+            decksTotal = fieldsCount * decksInFieldCount;
+        }
+
+        console.log({
+            fieldsCount,
+            decksInFieldCount,
+            lastFieldLength,
+            decksTotal,
+        });
+
+        const totalMaterial: TotalPriceType = {
             [values.wall]: {
-                amount: amount,
-                totalPrice: prices[values.wall as keyof typeof prices].price * amount,
+                amount: deckDim * decksTotal,
+                totalPrice: roundNumber(
+                    prices[values.wall as keyof typeof prices].price * decksInFieldCount * deckDim
+                ),
             },
             [values.pillars]: {
                 amount: pillarsCount,
-                totalPrice: prices[values.pillars as keyof typeof prices].price * pillarsCount,
+                totalPrice: roundNumber(
+                    prices[values.pillars as keyof typeof prices].price * pillarsCount
+                ),
             },
 
-            alu_lajsna: {
-                amount: 1,
-                totalPrice: prices.alu_lajsna.price * 1,
+            aluminium_molding: {
+                amount: pillarsCount + 2,
+                totalPrice: roundNumber(prices.aluminium_molding.price * (pillarsCount + 2)),
             },
 
-            start_alu: {
-                amount: 1,
-                totalPrice: prices.start_alu.price * 1,
+            start_aluminium_molding: {
+                amount: fieldsCount,
+                totalPrice: roundNumber(prices.start_aluminium_molding.price * fieldsCount),
             },
 
-            end_alu: {
-                amount: 1,
-                totalPrice: prices.end_alu.price * 1,
+            end_aluminium_molding: {
+                amount: fieldsCount,
+                totalPrice: roundNumber(prices.end_aluminium_molding.price * fieldsCount),
             },
 
             plastic_cap: {
-                amount: 1,
-                totalPrice: prices.plastic_cap.price * 1,
+                amount: pillarsCount,
+                totalPrice: roundNumber(prices.plastic_cap.price * pillarsCount),
             },
 
-            mask: {
-                amount: 1,
-                totalPrice: prices.mask.price * 1,
+            pillar_mask: {
+                amount: pillarsCount,
+                totalPrice: roundNumber(prices.pillar_mask.price * pillarsCount),
             },
-            stopa: {
-                amount: 1,
-                totalPrice: prices.stopa.price * 1,
+            column_foot: {
+                amount: pillarsCount,
+                totalPrice: roundNumber(prices.column_foot.price * pillarsCount),
             },
-            anker: {
-                amount: 4,
-                totalPrice: prices.anker.price * 1,
+            anchor: {
+                amount: 4 * pillarsCount,
+                totalPrice: roundNumber(prices.anchor.price * 4 * pillarsCount),
             },
             screw: {
-                amount: 4,
-                totalPrice: prices.screw.price * 1,
+                amount: 4 * pillarsCount,
+                totalPrice: roundNumber(prices.screw.price * 4 * pillarsCount),
             },
-            vinkla: {
-                amount: 1,
-                totalPrice: prices.vinkla.price * 1,
-            },
-            decors: {
-                totalPrice: prices.decors.price * 1,
-                amount: 1,
+            winkle: {
+                amount: pillarsCount,
+                totalPrice: roundNumber(prices.winkle.price * pillarsCount),
             },
         };
 
@@ -87,12 +120,6 @@ const Form = () => {
         const totalMaterial = calculateTotalPrice({ ...values, [key]: value });
 
         setTotal(totalMaterial);
-    };
-
-    const calculateInstallationPrice = (values: ValuesType): string => {
-        const amount = values.height * 0.01 * values.length;
-
-        return `${prices[values.wall as keyof typeof prices].price * amount}`;
     };
 
     const calculateMaterialPrice = (): string => {
@@ -140,36 +167,27 @@ const Form = () => {
                 <div className="options">
                     <Input
                         onChange={() => {
-                            onChange("metal_1", "pillars");
+                            onChange(PillarsTypeEnum.ALUMINIUM, "pillars");
                         }}
-                        label="Betonski"
-                        type="radio"
-                        selected={values.pillars === "metal_1"}
-                        name="stub"
-                    />
-                    <Input
-                        onChange={() => {
-                            onChange("metal_2", "pillars");
-                        }}
-                        label="Aluminijumski"
+                        label="Aluminijumski (crna RAL9004)"
                         type="radio"
                         name="stub"
-                        selected={values.pillars === "metal_2"}
+                        selected={values.pillars === PillarsTypeEnum.ALUMINIUM}
                     />
                 </div>
             </div>
 
             <div className="form-main__row">
-                <Text variant="info">Tip zida</Text>
+                <Text variant="info">Deking / ispuna</Text>
                 <div className="row-items">
                     <div
                         className="color-cont"
                         onClick={() => {
-                            onChange("wood_1", "wall");
+                            onChange(WallTypeEnum.WOOD_1, "wall");
                         }}
                     >
                         <img className="color-image" src={wood1} />
-                        {values.wall === "wood_1" && (
+                        {values.wall === WallTypeEnum.WOOD_1 && (
                             <div className="check-icon">
                                 <CheckIcon />
                             </div>
@@ -179,11 +197,11 @@ const Form = () => {
                     <div
                         className="color-cont"
                         onClick={() => {
-                            onChange("wood_2", "wall");
+                            onChange(WallTypeEnum.WOOD_2, "wall");
                         }}
                     >
                         <img className="color-image" src={wood2} />
-                        {values.wall === "wood_2" && (
+                        {values.wall === WallTypeEnum.WOOD_2 && (
                             <div className="check-icon">
                                 <CheckIcon />
                             </div>
@@ -193,11 +211,11 @@ const Form = () => {
                     <div
                         className="color-cont"
                         onClick={() => {
-                            onChange("wood_3", "wall");
+                            onChange(WallTypeEnum.WOOD_3, "wall");
                         }}
                     >
                         <img className="color-image" src={wood3} style={{ opacity: 0.85 }} />
-                        {values.wall === "wood_3" && (
+                        {values.wall === WallTypeEnum.WOOD_3 && (
                             <div className="check-icon">
                                 <CheckIcon />
                             </div>
@@ -207,11 +225,11 @@ const Form = () => {
                     <div
                         className="color-cont"
                         onClick={() => {
-                            onChange("wood_4", "wall");
+                            onChange(WallTypeEnum.ORIGINAL_1, "wall");
                         }}
                     >
                         <img className="color-image" src={wood4} style={{ opacity: 0.85 }} />
-                        {values.wall === "wood_4" && (
+                        {values.wall === WallTypeEnum.ORIGINAL_1 && (
                             <div className="check-icon">
                                 <CheckIcon />
                             </div>
@@ -220,11 +238,11 @@ const Form = () => {
                     <div
                         className="color-cont"
                         onClick={() => {
-                            onChange("wood_5", "wall");
+                            onChange(WallTypeEnum.ORIGINAL_2, "wall");
                         }}
                     >
                         <img className="color-image" src={wood5} style={{ opacity: 0.85 }} />
-                        {values.wall === "wood_5" && (
+                        {values.wall === WallTypeEnum.ORIGINAL_2 && (
                             <div className="check-icon">
                                 <CheckIcon />
                             </div>
@@ -233,11 +251,11 @@ const Form = () => {
                     <div
                         className="color-cont"
                         onClick={() => {
-                            onChange("wood_6", "wall");
+                            onChange(WallTypeEnum.ORIGINAL_3, "wall");
                         }}
                     >
                         <img className="color-image" src={wood6} style={{ opacity: 0.85 }} />
-                        {values.wall === "wood_6" && (
+                        {values.wall === WallTypeEnum.ORIGINAL_3 && (
                             <div className="check-icon">
                                 <CheckIcon />
                             </div>
@@ -248,18 +266,9 @@ const Form = () => {
 
             <div>
                 <Select
-                    options={[
-                        { label: "45 cm", value: 45 },
-                        { label: "60 cm", value: 60 },
-                        { label: "75 cm", value: 75 },
-                        { label: "90 cm", value: 90 },
-                        { label: "105 cm", value: 105 },
-                        { label: "120 cm", value: 120 },
-                        { label: "135 cm", value: 135 },
-                        { label: "150 cm", value: 150 },
-                    ]}
+                    options={heightList}
                     onChange={(e) => {
-                        onChange(e.target.value, "height");
+                        onChange(parseInt(e.target.value), "height");
                     }}
                     label="Visina"
                     defaultValue={values.height}
@@ -269,11 +278,12 @@ const Form = () => {
             <div>
                 <Input
                     onChange={(e) => {
-                        onChange(e.target.value, "length");
+                        onChange(parseFloat(e.target.value), "length");
                     }}
-                    label="Duzina (m)"
+                    label="Dužina (m)"
                     type="number"
                     defaultValue={values.length}
+                    minValue={0.9}
                 />
             </div>
 
@@ -287,7 +297,7 @@ const Form = () => {
                             </td>
                         </tr>
                         <tr className="row">
-                            <td className="cell primary">Tip zida</td>
+                            <td className="cell primary">Decking / ispuna</td>
                             <td className="cell">
                                 {prices[values.wall as keyof AllPricesType].element}
                             </td>
@@ -295,11 +305,11 @@ const Form = () => {
 
                         <tr className="row">
                             <td className="cell primary">Visina</td>
-                            <td className="cell">{values.height}</td>
+                            <td className="cell">{values.height} cm</td>
                         </tr>
                         <tr className="row">
-                            <td className="cell primary">Duzina</td>
-                            <td className="cell">{values.length}</td>
+                            <td className="cell primary">Dužina</td>
+                            <td className="cell">{values.length} m</td>
                         </tr>
                     </tbody>
                 </table>
@@ -312,26 +322,20 @@ const Form = () => {
                 </Text>
             </div>
 
-            <div className="price">
-                <Text>Cena montaze: </Text>
-                <Text color="red" options="bold">
-                    {calculateInstallationPrice(values)} €
-                </Text>
-            </div>
-
             <div className="note">
                 <Text options="bold"> Napomena:</Text>
                 <Text color="primary">
                     Prikazana cena je bez uračunatog PDV-a, a trošak montaže je informativnog
                     karaktera, bez uračunatih transportnih i terenskih troškova. Za instalaciju
-                    Savadeck ograde obavezno je pripremiti betonsku osnovu (parapet) širine 20 cm.
+                    Decking Zona ograde obavezno je pripremiti betonsku osnovu (parapet) širine 20
+                    cm.
                 </Text>
             </div>
 
             <div className="info-wrapper">
                 <Text variant="info">
                     Za specifične zahteve izvan standardnih dimenzija, molimo pošaljite upit na
-                    info@savadeck.com. Konfigurator je informativnog karaktera.
+                    info@deckingzona.com. Konfigurator je informativnog karaktera.
                 </Text>
             </div>
         </div>

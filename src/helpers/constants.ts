@@ -1,4 +1,4 @@
-import { AllPricesType } from "../interfaces/interfaces";
+import { AllPricesType, PillarsTypeEnum, WallTypeEnum } from "../interfaces/interfaces";
 
 export const tableRows = [
     {
@@ -7,7 +7,7 @@ export const tableRows = [
     },
     {
         key: "amount",
-        label: "Kolicina",
+        label: "Količina",
     },
     {
         key: "unit",
@@ -24,100 +24,108 @@ export const tableRows = [
 ];
 
 export const prices: AllPricesType = {
-    wood_1: {
-        element: "WPC Deking Wood 1",
+    [WallTypeEnum.WOOD_1]: {
+        element: "Wood Mocha m2 (150mm x 21mm x 1770mm)",
         unit: "m2",
         price: 38,
     },
-    wood_2: {
-        element: "WPC Deking Wood 2",
+    [WallTypeEnum.WOOD_2]: {
+        element: "Wood Ash Gray m2 (150mm x 21mm x 1770mm)",
         unit: "m2",
         price: 38,
     },
-    wood_3: {
-        element: "WPC Deking Wood 3",
+    [WallTypeEnum.WOOD_3]: {
+        element: "Wood Treak m2 (150mm x 21mm x 1770mm)",
         unit: "m2",
         price: 38,
     },
-    wood_4: {
-        element: "WPC Deking Original 1",
+    [WallTypeEnum.ORIGINAL_1]: {
+        element: "Original Treak m2 (150mm x 21mm x 1770mm)",
         unit: "m2",
         price: 38,
     },
-    wood_5: {
-        element: "WPC Deking Original 2",
+    [WallTypeEnum.ORIGINAL_2]: {
+        element: "Original Pistachio m2 (150mm x 21mm x 1770mm)",
         unit: "m2",
         price: 38,
     },
-    wood_6: {
-        element: "WPC Deking Original 3",
+    [WallTypeEnum.ORIGINAL_3]: {
+        element: "Original Mocha m2 (150mm x 21mm x 1770mm)",
         unit: "m2",
         price: 38,
     },
 
-    metal_1: {
-        element: "Betonski stub",
-        unit: "unit",
-        price: 0,
-    },
-    metal_2: {
-        element: "Aluminijumski stub",
-        unit: "unit",
+    [PillarsTypeEnum.ALUMINIUM]: {
+        element: "Aluminijumski stub  ( 68mm x 68mm x 1770mm)",
+        unit: "kom",
         price: 40,
     },
 
-    alu_lajsna: {
+    aluminium_molding: {
         element: "Alu stubna lajsna ( 23,6mm x 7mm x 1770mm )",
-        unit: "unit",
+        unit: "kom",
         price: 3.5,
     },
 
-    start_alu: {
+    start_aluminium_molding: {
         element: "Početna aluminijumska lajsna ( 21,5mm x 30mm x 1770mm )",
-        unit: "unit",
+        unit: "kom",
         price: 8,
     },
 
-    end_alu: {
+    end_aluminium_molding: {
         element: "Završna aluminijumska lajsna ",
-        unit: "unit",
+        unit: "kom",
         price: 8,
     },
 
     plastic_cap: {
         element: "Plastična kapa stuba ",
-        unit: "unit",
+        unit: "kom",
         price: 1.5,
     },
 
-    mask: {
-        element: " Maska za stubnu stopu ",
-        unit: "unit",
+    pillar_mask: {
+        element: "Maska za stubnu stopu ",
+        unit: "kom",
         price: 2.5,
     },
-    stopa: {
+    column_foot: {
         element: " Stopa za stub / nosač stuba  ",
-        unit: "unit",
+        unit: "kom",
         price: 10,
     },
-    anker: {
+    anchor: {
         element: "Ankeri ",
-        unit: "unit",
+        unit: "kom",
         price: 1,
     },
     screw: {
         element: "Šrafovi za ankere  ",
-        unit: "unit",
+        unit: "kom",
         price: 0.5,
     },
-    vinkla: {
+    winkle: {
         element: "Stubna L Vinkla sa šrafovima  ",
-        unit: "unit",
+        unit: "kom",
         price: 1.2,
     },
     decors: {
         element: "Dekorativne aplikacije  (300mm x 20mm x 1800mm) ",
-        unit: "unit",
+        unit: "kom",
         price: 40,
     },
 };
+
+export const heightList = [
+    { label: "45 cm", value: 45 },
+    { label: "60 cm", value: 60 },
+    { label: "75 cm", value: 75 },
+    { label: "90 cm", value: 90 },
+    { label: "105 cm", value: 105 },
+    { label: "120 cm", value: 120 },
+    { label: "135 cm", value: 135 },
+    { label: "150 cm", value: 150 },
+    { label: "165 cm", value: 165 },
+    { label: "180 cm", value: 180 },
+];
