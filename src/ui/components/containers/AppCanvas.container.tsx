@@ -9,12 +9,16 @@ import Lights from "../atoms/Lights.atom";
 import { useValues } from "../../../context/FormValuesContext";
 
 import "../../styles/containers/appCanvas.container.scss";
+import CanvasCursor from "../atoms/CanvasCursor.atom";
+import { useRef } from "react";
 
 export default function AppCanvas() {
   const { scene } = useValues();
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="three-canvas">
+    <div ref={canvasRef} className="three-canvas">
+      <CanvasCursor canvasRef={canvasRef} />
       <Canvas
         gl={{
           toneMappingExposure: 1,
