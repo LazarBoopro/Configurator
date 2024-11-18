@@ -1,37 +1,12 @@
 @import "variables.scss";
 
 .statement {
-  padding: 5rem 10rem;
-  width: 100%;
+  // padding: 5rem 10rem;
+  // width: 100%;
 }
 
 .submit-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-}
-
-.configurator {
-  height: 100dvh;
-  display: grid;
-  grid-template-columns: 1fr 0.5fr;
-
-  &__left {
-    max-height: 100dvh;
-    padding: 1rem;
-    border-right: 1px solid $light-gray-clr;
-
-    & > * {
-      outline: 1px solid $light-gray-clr;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
-  }
-
-  &__right {
-    overflow-y: auto;
-    background-color: $white-clr;
-    padding: 1rem;
-  }
 }
