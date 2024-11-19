@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useValues, ValuesProvider } from "./context/FormValuesContext";
+import { ValuesProvider } from "./context/FormValuesContext";
 
 import Configurator from "./ui/moleculs/Configurator.molecul";
 import Table from "./ui/moleculs/Table.molecul";

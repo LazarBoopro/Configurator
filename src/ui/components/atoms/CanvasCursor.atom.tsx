@@ -7,6 +7,7 @@ export default function CanvasCursor({
   canvasRef: RefObject<HTMLDivElement>;
 }) {
   const [position, setPosition] = useState({ x: 150, y: 150 });
+  // @ts-expect-error
   const [visibile, setVisible] = useState(false);
 
   const handleMouseMove = (event: MouseEvent) => {
@@ -35,7 +36,8 @@ export default function CanvasCursor({
   }, []);
 
   return (
-    visibile && (
+    <AnimatePresence>
+      visibile && (
       <motion.div
         initial={{
           scale: 0,
@@ -94,6 +96,7 @@ export default function CanvasCursor({
               }}
             /> */}
       </motion.div>
-    )
+      )
+    </AnimatePresence>
   );
 }
