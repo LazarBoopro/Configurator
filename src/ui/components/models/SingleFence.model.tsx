@@ -9,6 +9,7 @@ import {
 import { GLTF } from "three-stdlib";
 
 import useTextures from "../../hooks/useTextures.hook";
+import { useValues } from "../../../context/FormValuesContext";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -29,6 +30,7 @@ type GLTFResult = GLTF & {
 export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/models/singleFence.glb") as GLTFResult;
   const { selectedTexturePillar, selectedTextureWall } = useTextures();
+  const { values } = useValues();
 
   return (
     <>
@@ -37,7 +39,7 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
 
       {/* --- */}
       <Center>
-        <group {...props} dispose={null}>
+        <group {...props} receiveShadow castShadow dispose={null}>
           <mesh
             castShadow
             receiveShadow
@@ -47,8 +49,8 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
             scale={[1, 1, 2.376]}
           >
             <meshStandardMaterial
-              roughness={0.5}
-              metalness={0.25}
+              roughness={values.wall.includes("wood") ? 1 : 0.8}
+              metalness={values.wall.includes("wood") ? 0.1 : 0.5}
               side={THREE.DoubleSide}
               {...selectedTextureWall}
             />
@@ -61,8 +63,9 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
             position={[-0.516, 0.432, 0]}
           >
             <meshStandardMaterial
-              roughness={1}
-              metalness={0}
+              roughness={0.9}
+              color={"black"}
+              metalness={0.1}
               {...selectedTexturePillar}
             />
           </mesh>
@@ -74,8 +77,9 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
             position={[-0.516, 0.432, 0]}
           >
             <meshStandardMaterial
-              roughness={1}
-              metalness={0}
+              roughness={0.9}
+              color={"black"}
+              metalness={0.1}
               {...selectedTexturePillar}
             />
           </mesh>
@@ -87,8 +91,9 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
             position={[0.512, 0.432, 0]}
           >
             <meshStandardMaterial
-              roughness={1}
-              metalness={0}
+              roughness={0.9}
+              color={"black"}
+              metalness={0.1}
               {...selectedTexturePillar}
             />
           </mesh>
@@ -99,11 +104,7 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
             material={materials.pillar}
             position={[0.512, 0.432, 0]}
           >
-            <meshStandardMaterial
-              roughness={1}
-              metalness={0}
-              {...selectedTexturePillar}
-            />
+            <meshStandardMaterial roughness={0.9} {...selectedTexturePillar} />
           </mesh>
           <mesh
             castShadow
@@ -112,11 +113,7 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
             material={materials.pillar}
             position={[0, 0.8, 0]}
           >
-            <meshStandardMaterial
-              roughness={1}
-              metalness={0}
-              {...selectedTexturePillar}
-            />
+            <meshStandardMaterial color={"black"} {...selectedTexturePillar} />
           </mesh>
           <mesh
             castShadow
@@ -125,11 +122,7 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
             material={materials.pillar}
             position={[0, 0.006, 0]}
           >
-            <meshStandardMaterial
-              roughness={1}
-              metalness={0}
-              {...selectedTexturePillar}
-            />
+            <meshStandardMaterial metalness={0.1} {...selectedTexturePillar} />
           </mesh>
         </group>
       </Center>

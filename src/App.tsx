@@ -8,16 +8,19 @@ import "./ui/styles/global.scss";
 
 function App() {
   const [page, setPage] = useState(0);
+
+  console.log(page);
+
   return (
-    <main>
-      <ValuesProvider>
+    <ValuesProvider>
+      <main>
         {page === 0 ? (
           <Configurator setPage={setPage} />
         ) : (
           <Table setPage={setPage} />
         )}
-      </ValuesProvider>
-    </main>
+      </main>
+    </ValuesProvider>
   );
 }
 
