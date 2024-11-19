@@ -1,14 +1,14 @@
 import { useThree } from "@react-three/fiber";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useValues } from "../../../context/FormValuesContext";
 
 export default function Camera() {
   const { camera } = useThree();
   const { scene } = useValues();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    camera.position.set(-Math.PI / 1.5, Math.PI / 2, 4);
     camera.zoom = scene === 0 ? 1.2 : 1.3;
-    camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
   }, [camera, scene]);
 

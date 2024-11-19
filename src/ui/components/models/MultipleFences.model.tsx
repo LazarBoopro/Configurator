@@ -71,8 +71,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[1.03, 0.432, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -84,8 +85,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[1.03, 0.432, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -97,8 +99,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[2.059, 0.432, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -110,8 +113,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[2.059, 0.432, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -123,8 +127,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[1.547, 0.8, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -136,8 +141,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[1.547, 0.006, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -164,8 +170,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[0.521, 0.8, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -177,8 +184,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[0.521, 0.006, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -190,8 +198,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[0.005, 0.432, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -203,8 +212,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[0.005, 0.432, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
@@ -213,7 +223,7 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           receiveShadow
           geometry={nodes.Zid002.geometry}
           material={materials["Material.002"]}
-          position={[-0.522, 0.415, 0]}
+          position={[-0.5, 0.42, 0.001]}
           scale={[1, 1, 2.376]}
         >
           <meshStandardMaterial
@@ -245,102 +255,9 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
           position={[-0.524, 0.006, 0]}
         >
           <meshStandardMaterial
-            roughness={4}
-            metalness={0}
-            {...selectedTexturePillar}
-          />
-        </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LeviStubCap002.geometry}
-          material={materials["Material.002"]}
-          position={[-1.04, 0.432, 0]}
-        >
-          <meshStandardMaterial
-            roughness={4}
-            metalness={0}
-            {...selectedTexturePillar}
-          />
-        </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LeviStub002.geometry}
-          material={materials["Material.002"]}
-          position={[-1.04, 0.432, 0]}
-        >
-          <meshStandardMaterial
-            roughness={4}
-            metalness={0}
-            {...selectedTexturePillar}
-          />
-        </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Zid003.geometry}
-          material={materials["Material.003"]}
-          position={[-1.56, 0.415, 0]}
-          scale={[1, 1, 2.376]}
-        >
-          <meshStandardMaterial
-            roughness={1}
-            side={THREE.DoubleSide}
-            metalness={0}
-            {...selectedTextureWall}
-          />
-        </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Vrh003.geometry}
-          material={materials["Material.003"]}
-          position={[-1.563, 0.8, 0]}
-        >
-          <meshStandardMaterial
-            roughness={4}
-            side={THREE.DoubleSide}
-            metalness={0}
-            {...selectedTexturePillar}
-          />
-        </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.postolje003.geometry}
-          material={materials["Material.003"]}
-          position={[-1.563, 0.006, 0]}
-        >
-          <meshStandardMaterial
-            roughness={4}
-            metalness={0}
-            {...selectedTexturePillar}
-          />
-        </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LeviStubCap003.geometry}
-          material={materials["Material.003"]}
-          position={[-2.079, 0.432, 0]}
-        >
-          <meshStandardMaterial
-            roughness={4}
-            metalness={0}
-            {...selectedTexturePillar}
-          />
-        </mesh>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LeviStub003.geometry}
-          material={materials["Material.003"]}
-          position={[-2.079, 0.432, 0]}
-        >
-          <meshStandardMaterial
-            roughness={4}
-            metalness={0}
+            roughness={0.9}
+            color={"black"}
+            metalness={0.1}
             {...selectedTexturePillar}
           />
         </mesh>
