@@ -10,7 +10,6 @@ import {
   PillarsTypeEnum,
   TotalPriceType,
   ValuesType,
-  WallTypeEnum,
 } from "../../../interfaces/interfaces";
 
 import { heightList, prices, woodTypes } from "../../../helpers/constants";
