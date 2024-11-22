@@ -1,7 +1,7 @@
 import { Button } from "../components/atoms/Button.atom";
 import Statement from "../components/containers/Statement.container";
 
-import "../styles/table.molecul.scss";
+import "../styles/statement.scss";
 
 export default function Table({ setPage }: { setPage: CallableFunction }) {
   return (

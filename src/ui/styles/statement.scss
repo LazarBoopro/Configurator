@@ -1,12 +1,12 @@
 @import "variables.scss";
 
 .submit-buttons {
-  padding: 0 1rem;
+  padding: 0 5rem;
   margin-bottom: 1rem;
 }
 
 .statement-main {
-  padding: 1rem;
+  padding: 1rem 5rem;
 
   .divider {
     height: 1px;
@@ -95,6 +95,29 @@
           text-align: end;
         }
       }
+    }
+  }
+
+  .note{
+    margin-top: 1rem;
+    background-color: rgb($light-gray-clr, 0.35);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & > p {
+      color: $primary-clr;
+      text-align: left;
+    }
+
+    & > p:nth-of-type(2) {
+      color: $black-clr;
+      line-height: 1.2;
+      text-wrap: balance;
+      font-size: clamp(1rem, 2vw, 1rem);
     }
   }
 }

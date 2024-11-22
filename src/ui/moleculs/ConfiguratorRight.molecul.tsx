@@ -20,10 +20,10 @@ export default function ConfiguratorRight({
           }}
           disabled={values.length < 0.9}
         >
-          Obracun
+          Obračun
         </Button>
         <Button disabled variant="outline" onClick={() => {}}>
-          Zakazite izlazak na teren
+          Zakažite izlazak na teren
         </Button>
       </div>
     </article>

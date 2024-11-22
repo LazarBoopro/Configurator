@@ -42,74 +42,74 @@ export const woodTypes = [
   {
     name: WallTypeEnum.WOOD_3,
     type: "Wood",
-    title: "Treak",
+    title: "Teak",
   },
   {
     name: WallTypeEnum.ORIGINAL_1,
-    type: "original",
-    title: "Treak",
+    type: "Original",
+    title: "Teak",
   },
   {
     name: WallTypeEnum.ORIGINAL_2,
-    type: "original",
+    type: "Original",
     title: "Pistachio",
   },
   {
     name: WallTypeEnum.ORIGINAL_3,
-    type: "original",
+    type: "Original",
     title: "Mocha",
   },
 ];
 
 export const prices: AllPricesType = {
-  [WallTypeEnum.WOOD_1]: {
-    element: "Wood Mocha m2 (150mm x 21mm x 1770mm)",
-    unit: "m2",
-    price: 38,
-  },
-  [WallTypeEnum.WOOD_2]: {
-    element: "Wood Ash Gray m2 (150mm x 21mm x 1770mm)",
-    unit: "m2",
-    price: 38,
-  },
-  [WallTypeEnum.WOOD_3]: {
-    element: "Wood Treak m2 (150mm x 21mm x 1770mm)",
-    unit: "m2",
-    price: 38,
-  },
-  [WallTypeEnum.ORIGINAL_1]: {
-    element: "Original Treak m2 (150mm x 21mm x 1770mm)",
-    unit: "m2",
-    price: 38,
-  },
-  [WallTypeEnum.ORIGINAL_2]: {
-    element: "Original Pistachio m2 (150mm x 21mm x 1770mm)",
-    unit: "m2",
-    price: 38,
-  },
-  [WallTypeEnum.ORIGINAL_3]: {
-    element: "Original Mocha m2 (150mm x 21mm x 1770mm)",
-    unit: "m2",
-    price: 38,
-  },
+    [WallTypeEnum.WOOD_1]: {
+        element: "Wood Mocha m2 (150mm x 21mm x 1800mm)",
+        unit: "kom",
+        price: 38,
+    },
+    [WallTypeEnum.WOOD_2]: {
+        element: "Wood Ash Gray m2 (150mm x 21mm x 1800mm)",
+        unit: "kom",
+        price: 38,
+    },
+    [WallTypeEnum.WOOD_3]: {
+        element: "Wood Teak m2 (150mm x 21mm x 1800mm)",
+        unit: "kom",
+        price: 38,
+    },
+    [WallTypeEnum.ORIGINAL_1]: {
+        element: "Original Teak m2 (150mm x 21mm x 1800mm)",
+        unit: "kom",
+        price: 38,
+    },
+    [WallTypeEnum.ORIGINAL_2]: {
+        element: "Original Pistachio m2 (150mm x 21mm x 1800mm)",
+        unit: "kom",
+        price: 38,
+    },
+    [WallTypeEnum.ORIGINAL_3]: {
+        element: "Original Mocha m2 (150mm x 21mm x 1800mm)",
+        unit: "kom",
+        price: 38,
+    },
 
-  [PillarsTypeEnum.ALUMINIUM]: {
-    element: "Aluminijumski stub  ( 68mm x 68mm x 1770mm)",
-    unit: "kom",
-    price: 40,
-  },
+    [PillarsTypeEnum.ALUMINIUM]: {
+        element: "Aluminijumski stub  ( 68mm x 68mm x 1800mm)",
+        unit: "kom",
+        price: 40,
+    },
 
-  aluminium_molding: {
-    element: "Alu stubna lajsna ( 23,6mm x 7mm x 1770mm )",
-    unit: "kom",
-    price: 3.5,
-  },
+    aluminium_molding: {
+        element: "Alu stubna lajsna ( 23,6mm x 7mm x 1800mm )",
+        unit: "kom",
+        price: 3.5,
+    },
 
-  start_aluminium_molding: {
-    element: "Početna aluminijumska lajsna ( 21,5mm x 30mm x 1770mm )",
-    unit: "kom",
-    price: 8,
-  },
+    start_aluminium_molding: {
+        element: "Početna aluminijumska lajsna ( 21,5mm x 30mm x 1800mm )",
+        unit: "kom",
+        price: 8,
+    },
 
   end_aluminium_molding: {
     element: "Završna aluminijumska lajsna ",
@@ -169,15 +169,15 @@ export const heightList = [
 ];
 
 export const totalPriceDefault: TotalPriceType = {
-  wood_1: { amount: 0.54, totalPrice: 20.52 },
-  aluminium_pillar: { amount: 2, totalPrice: 80 },
-  aluminium_molding: { amount: 4, totalPrice: 14 },
-  start_aluminium_molding: { amount: 1, totalPrice: 8 },
-  end_aluminium_molding: { amount: 1, totalPrice: 8 },
-  plastic_cap: { amount: 2, totalPrice: 3 },
-  pillar_mask: { amount: 2, totalPrice: 5 },
-  column_foot: { amount: 2, totalPrice: 20 },
-  anchor: { amount: 8, totalPrice: 8 },
-  screw: { amount: 8, totalPrice: 4 },
-  winkle: { amount: 2, totalPrice: 2.4 },
+    wood_1: { amount: 2, totalPrice: 20.52 },
+    aluminium_pillar: { amount: 2, totalPrice: 80 },
+    aluminium_molding: { amount: 4, totalPrice: 14 },
+    start_aluminium_molding: { amount: 1, totalPrice: 8 },
+    end_aluminium_molding: { amount: 1, totalPrice: 8 },
+    plastic_cap: { amount: 2, totalPrice: 3 },
+    pillar_mask: { amount: 2, totalPrice: 5 },
+    column_foot: { amount: 2, totalPrice: 20 },
+    anchor: { amount: 8, totalPrice: 8 },
+    screw: { amount: 8, totalPrice: 4 },
+    winkle: { amount: 2, totalPrice: 2.4 },
 };

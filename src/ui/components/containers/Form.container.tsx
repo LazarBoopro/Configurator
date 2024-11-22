@@ -10,6 +10,7 @@ import {
   PillarsTypeEnum,
   TotalPriceType,
   ValuesType,
+  WallTypeEnum,
 } from "../../../interfaces/interfaces";
 
 import { heightList, prices, woodTypes } from "../../../helpers/constants";
@@ -31,7 +32,7 @@ const Form = () => {
 
       const pillarsCount = Math.ceil(values.length / 1.8) + 1;
       const fieldsCount = pillarsCount - 1;
-      const decksInFieldCount = Math.ceil(values.height / deckHeight);
+      const decksInFieldCount = Math.floor(values.height / deckHeight);
       const lastFieldLength = values.length - (fieldsCount - 1) * deckMaxLength;
 
       let decksTotal = 0;
@@ -50,7 +51,7 @@ const Form = () => {
 
       const totalMaterial: TotalPriceType = {
         [values.wall]: {
-          amount: deckDim * decksTotal,
+          amount: decksTotal,
           totalPrice: roundNumber(
             prices[values.wall as keyof typeof prices].price *
               decksTotal *
