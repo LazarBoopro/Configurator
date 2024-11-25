@@ -1,5 +1,5 @@
 import { useValues } from "../../context/FormValuesContext";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import { Button } from "../components/atoms/Button.atom";
 import Statement from "../components/containers/Statement.container";
 import StatementPDF from "../components/containers/StatementPdf.container";
@@ -7,13 +7,13 @@ import StatementPDF from "../components/containers/StatementPdf.container";
 import "../styles/statement.scss";
 
 export default function Table({ setPage }: { setPage: CallableFunction }) {
-    const { total } = useValues();
+    const { total, values } = useValues();
 
     return (
         <div className="statement">
-            {/* <PDFViewer className="pdf_viewer">
-                <StatementPDF total={total} />
-            </PDFViewer> */}
+            <PDFViewer className="pdf_viewer">
+                <StatementPDF total={total} values={values} />
+            </PDFViewer>
 
             <Statement />
             <div className="submit-buttons">
@@ -31,7 +31,7 @@ export default function Table({ setPage }: { setPage: CallableFunction }) {
                         Zakažite izlazak na teren
                     </Button>
                     <PDFDownloadLink
-                        document={<StatementPDF total={total} />}
+                        document={<StatementPDF total={total} values={values} />}
                         fileName="Decking Zona Obračun.pdf"
                         className="pdf_download-button"
                     >

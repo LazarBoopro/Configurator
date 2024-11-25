@@ -1,6 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, Font } from "@react-pdf/renderer";
 import { prices, tableRows } from "../../../helpers/constants";
-import { TotalPriceType } from "../../../interfaces/interfaces";
+import { AllPricesType, TotalPriceType, ValuesType } from "../../../interfaces/interfaces";
 
 Font.register({
     family: "Poppins",
@@ -14,6 +14,34 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: "Poppins",
     },
+
+    container: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: 10,
+        flexWrap: "wrap",
+    },
+    box: {
+        padding: 5,
+        backgroundColor: "#f5f5f5",
+        borderRadius: 5,
+        flexGrow: 1,
+        margin: 2,
+        display: "flex",
+
+        gap: 5,
+    },
+    label: {
+        fontSize: 10,
+        fontWeight: "bold",
+        color: "#a67c52",
+    },
+    value: {
+        fontSize: 10,
+        color: "#333",
+    },
+
     header: {
         fontSize: 16,
         marginBottom: 10,
@@ -64,12 +92,40 @@ const styles = StyleSheet.create({
     },
 });
 
-// Component
-const StatementPDF = ({ total }: { total: TotalPriceType }) => {
+const StatementPDF = ({ total, values }: { total: TotalPriceType; values: ValuesType }) => {
     return (
         <Document>
             <Page size="A4" style={styles.page}>
                 <Text style={styles.header}>{"Obračun"}</Text>
+
+                <View style={styles.container}>
+                    <View style={styles.box}>
+                        <Text style={styles.label}>Stub:</Text>
+                        <Text style={styles.value}>
+                            {prices[values.pillars as keyof AllPricesType].element}
+                        </Text>
+                    </View>
+                    <View style={styles.box}>
+                        <Text style={styles.label}>Decking / ispuna:</Text>
+                        <Text style={styles.value}>
+                            {prices[values.wall as keyof AllPricesType].element}
+                        </Text>
+                    </View>
+                    <View style={[styles.box, { flexDirection: "row" }]}>
+                        <Text style={styles.label}>Broj polja:</Text>
+                        <Text style={styles.value}>{`${
+                            (total?.[values.pillars]?.amount ?? 1) - 1
+                        }`}</Text>
+                    </View>
+                    <View style={[styles.box, { flexDirection: "row" }]}>
+                        <Text style={styles.label}>Visina:</Text>
+                        <Text style={styles.value}>{`${values.height} cm`}</Text>
+                    </View>
+                    <View style={[styles.box, { flexDirection: "row" }]}>
+                        <Text style={styles.label}>Dužina:</Text>
+                        <Text style={styles.value}>{`${values.length} m`}</Text>
+                    </View>
+                </View>
 
                 <View style={styles.table}>
                     <View style={styles.tableRow}>
