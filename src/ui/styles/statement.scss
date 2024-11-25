@@ -1,8 +1,11 @@
 @import "variables.scss";
 
-.submit-buttons {
-  padding: 0 5rem;
-  margin-bottom: 1rem;
+.statement {
+
+  .submit-buttons {
+    padding: 0 5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .statement-main {
@@ -49,6 +52,7 @@
         &:is(:first-child) {
           text-align: start;
         }
+
         text-align: end;
       }
     }
@@ -92,13 +96,14 @@
           &:is(:first-child) {
             text-align: start;
           }
+
           text-align: end;
         }
       }
     }
   }
 
-  .note{
+  .note {
     margin-top: 1rem;
     background-color: rgb($light-gray-clr, 0.35);
     border-radius: 0.75rem;
@@ -108,18 +113,20 @@
     flex-direction: column;
     gap: 0.5rem;
 
-    & > p {
+    &>p {
       color: $primary-clr;
       text-align: left;
     }
 
-    & > p:nth-of-type(2) {
+    &>p:nth-of-type(2) {
       color: $black-clr;
       line-height: 1.2;
       text-wrap: balance;
       font-size: clamp(1rem, 2vw, 1rem);
     }
   }
+
+
 }
 
 @media (max-width: 767px) {
@@ -131,5 +138,32 @@
     .table {
       display: block;
     }
+  }
+
+
+}
+
+.pdf {
+  &_viewer {
+    height: 90vh;
+    width: 100%;
+  }
+
+  &_download-button {
+    color: $white-clr;
+    border-radius: 2.75rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+    border: none;
+    cursor: pointer;
+    transition: color, background 0.2s ease-in-out;
+
+    background: $primary-clr-2;
+
+    &:hover {
+      background: rgb($primary-clr-2, 0.65);
+    }
+
   }
 }

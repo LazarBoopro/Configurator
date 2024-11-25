@@ -7,21 +7,15 @@ import Table from "./ui/moleculs/Table.molecul";
 import "./ui/styles/global.scss";
 
 function App() {
-  const [page, setPage] = useState(0);
+    const [page, setPage] = useState(0);
 
-  console.log(page);
-
-  return (
-    <ValuesProvider>
-      <main>
-        {page === 0 ? (
-          <Configurator setPage={setPage} />
-        ) : (
-          <Table setPage={setPage} />
-        )}
-      </main>
-    </ValuesProvider>
-  );
+    return (
+        <ValuesProvider>
+            <main>
+                {page === 0 ? <Configurator setPage={setPage} /> : <Table setPage={setPage} />}
+            </main>
+        </ValuesProvider>
+    );
 }
 
 export default App;
