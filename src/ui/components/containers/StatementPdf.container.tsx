@@ -4,7 +4,7 @@ import { AllPricesType, TotalPriceType, ValuesType } from "../../../interfaces/i
 
 Font.register({
     family: "Poppins",
-    src: "src/assets/Poppins-Regular.ttf",
+    src: "../../../src/assets/Poppins-Regular.ttf",
 });
 
 // Define styles
