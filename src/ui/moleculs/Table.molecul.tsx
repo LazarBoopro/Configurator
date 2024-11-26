@@ -1,5 +1,5 @@
 import { useValues } from "../../context/FormValuesContext";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { Button } from "../components/atoms/Button.atom";
 import Statement from "../components/containers/Statement.container";
 import StatementPDF from "../components/containers/StatementPdf.container";
@@ -11,14 +11,14 @@ export default function Table({ setPage }: { setPage: CallableFunction }) {
 
     return (
         <div className="statement">
-            <PDFViewer className="pdf_viewer">
+            {/* <PDFViewer className="pdf_viewer">
                 <StatementPDF total={total} values={values} />
-            </PDFViewer>
+            </PDFViewer> */}
 
             <Statement />
             <div className="submit-buttons">
                 <Button
-                    variant="primary"
+                    variant="secondary"
                     onClick={() => {
                         setPage(0);
                     }}
@@ -27,7 +27,7 @@ export default function Table({ setPage }: { setPage: CallableFunction }) {
                 </Button>
 
                 <div>
-                    <Button variant="secondary" onClick={() => {}}>
+                    <Button variant="outline" onClick={() => {}}>
                         Zakažite izlazak na teren
                     </Button>
                     <PDFDownloadLink
