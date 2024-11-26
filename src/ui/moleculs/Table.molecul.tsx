@@ -32,7 +32,7 @@ export default function Table({ setPage }: { setPage: CallableFunction }) {
                     </Button>
                     <PDFDownloadLink
                         document={<StatementPDF total={total} values={values} />}
-                        fileName="Decking Zona Obračun.pdf"
+                        fileName="Deking Zona Obračun.pdf"
                         className="pdf_download-button"
                     >
                         Preuzmi PDF

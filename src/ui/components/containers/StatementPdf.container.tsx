@@ -106,7 +106,7 @@ const StatementPDF = ({ total, values }: { total: TotalPriceType; values: Values
                         </Text>
                     </View>
                     <View style={styles.box}>
-                        <Text style={styles.label}>Decking / ispuna:</Text>
+                        <Text style={styles.label}>Deking / ispuna:</Text>
                         <Text style={styles.value}>
                             {prices[values.wall as keyof AllPricesType].element}
                         </Text>
