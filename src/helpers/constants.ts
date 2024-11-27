@@ -32,7 +32,7 @@ export const woodTypes = [
     {
         name: WallTypeEnum.WOOD_1,
         type: "Wood",
-        title: "Mocha",
+        title: "Teak",
     },
     {
         name: WallTypeEnum.WOOD_2,
@@ -42,7 +42,7 @@ export const woodTypes = [
     {
         name: WallTypeEnum.WOOD_3,
         type: "Wood",
-        title: "Teak",
+        title: "Mocha",
     },
     {
         name: WallTypeEnum.ORIGINAL_1,
@@ -63,7 +63,7 @@ export const woodTypes = [
 
 export const prices: AllPricesType = {
     [WallTypeEnum.WOOD_1]: {
-        element: "Wood Mocha m2 (150mm x 21mm x 1800mm)",
+        element: "Wood Teak m2 (150mm x 21mm x 1800mm)",
         unit: "kom",
         price: 38,
     },
@@ -73,7 +73,7 @@ export const prices: AllPricesType = {
         price: 38,
     },
     [WallTypeEnum.WOOD_3]: {
-        element: "Wood Teak m2 (150mm x 21mm x 1800mm)",
+        element: "Wood Mocha m2 (150mm x 21mm x 1800mm)",
         unit: "kom",
         price: 38,
     },

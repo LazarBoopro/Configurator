@@ -1,6 +1,7 @@
 import { useThree } from "@react-three/fiber";
 import { useLayoutEffect } from "react";
 import { useValues } from "../../../context/FormValuesContext";
+import { OrbitControls } from "@react-three/drei";
 
 export default function Camera() {
   const { camera } = useThree();
@@ -12,5 +13,17 @@ export default function Camera() {
     camera.updateProjectionMatrix();
   }, [camera, scene]);
 
-  return null;
+  return (
+    <OrbitControls
+      enableDamping={true}
+      dampingFactor={0.02}
+      rotateSpeed={0.2}
+      enableZoom={false}
+      enablePan={false}
+      minPolarAngle={scene === 0 ? Math.PI / 4 : Math.PI / 2.5}
+      maxPolarAngle={scene === 0 ? Math.PI / 2 : Math.PI / 2}
+      minAzimuthAngle={scene === 0 ? -Math.PI / 4 : -Math.PI / 8}
+      maxAzimuthAngle={scene === 0 ? Math.PI / 4 : Math.PI / 8}
+    />
+  );
 }
