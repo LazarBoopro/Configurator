@@ -39,7 +39,9 @@ export default function ConfiguratorRight({ setPage }: { setPage: CallableFuncti
                     >
                         Zakažite izlazak na teren
                     </p>
-                    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                    <div
+                        style={{ display: "flex", justifyContent: "flex-start", flexWrap: "wrap" }}
+                    >
                         <a
                             style={{
                                 padding: ".5rem 1rem",
