@@ -8,6 +8,10 @@
   &__right {
     padding: 1rem;
 
+    .button {
+      height: fit-content;
+    }
+
     .table {
       border-radius: 0.5rem;
       // padding: 0.5rem;
@@ -117,7 +121,29 @@
       background-color: $white-clr;
       padding: 1rem;
 
+      .submit-buttons {
+        gap: .5rem;
+        align-items: flex-end;
+
+
+
+        a {
+          p {
+            text-wrap: nowrap;
+          }
+        }
+
+
+      }
 
     }
+  }
+}
+
+@media(max-width:768px) {
+  .submit-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
   }
 }
