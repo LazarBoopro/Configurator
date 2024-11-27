@@ -68,13 +68,13 @@ export default function useTextures() {
 
     // WOOOD
     wood1: {
-      scale: { x: 2, y: 3 },
-      offset: { x: Math.PI / 1.3, y: 0 },
+      scale: { x: 3, y: 4 },
+      offset: { x: Math.PI / 1.2, y: 0 },
       rotation: Math.PI / 2,
     },
     wood2: {
-      scale: { x: 2, y: 3 },
-      offset: { x: Math.PI / 1, y: 1 },
+      scale: { x: 3, y: 4 },
+      offset: { x: Math.PI / 1.2, y: 1 },
       rotation: Math.PI / 2,
     },
     floor: { scale: { x: 12, y: 4 }, offset: { x: 0, y: 0 }, rotation: 0 },
