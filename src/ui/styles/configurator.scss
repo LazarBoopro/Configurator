@@ -8,9 +8,7 @@
   &__right {
     padding: 1rem;
 
-    .button {
-      height: fit-content;
-    }
+
 
     .table {
       border-radius: 0.5rem;
@@ -43,45 +41,24 @@
       }
     }
 
-    .schedule {
+    .form-actions {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      // gap: 0.25rem;
+      align-items: flex-end;
+      gap: 0.5rem;
 
-      // border-radius: 2.75rem;
-      // font-size: clamp(0.85rem, 2vw, 1rem);
-      // font-weight: 600;
-      // padding: 1rem 1.25rem;
-      // border: none;
-      // transition: color, background 0.2s ease-in-out;
-      // outline: 1px solid $black-clr;
-      // color: $black-clr;
-      // background-color: transparent;
-
-      background-color: rgb($light-gray-clr, 0.35);
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
-      text-align: center;
-
-
-      &>div {
-        &>a {
-          border-radius: 2.75rem;
-          padding: 0.25rem;
-
-          &:hover {
-            background: rgb($black-clr, 0.125);
-          }
-        }
+      .button {
+        height: fit-content;
+        flex-grow: 1;
+        width: 100%;
       }
+
+
     }
 
   }
 
   &__left {
-    // position: sticky;
     top: 0;
     z-index: 2;
     border-bottom: 1px solid $dark-gray-clr;
@@ -121,11 +98,9 @@
       background-color: $white-clr;
       padding: 1rem;
 
-      .submit-buttons {
-        gap: .5rem;
-        align-items: flex-end;
+      .form-actions {
 
-
+        flex-direction: row;
 
         a {
           p {
@@ -133,17 +108,12 @@
           }
         }
 
-
+        .button,
+        .schedule {
+          width: auto;
+        }
       }
 
     }
-  }
-}
-
-@media(max-width:768px) {
-  .submit-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
   }
 }
