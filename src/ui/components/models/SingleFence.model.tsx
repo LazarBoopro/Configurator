@@ -31,7 +31,7 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
     return (
         <>
             <color attach="background" args={[`#ebebeb`]} />
-            <fog attach="fog" args={["#ebebeb", 0, 20]} />
+            <fog attach="fog" args={["#ebebeb", 0, 25]} />
 
             {/* --- */}
             <Center>

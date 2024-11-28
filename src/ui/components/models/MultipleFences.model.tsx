@@ -46,7 +46,6 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
 
     return (
         <group {...props} dispose={null}>
-            <ambientLight intensity={0.5} />
             <Center>
                 <mesh
                     castShadow
