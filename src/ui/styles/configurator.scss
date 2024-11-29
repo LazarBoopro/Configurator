@@ -8,6 +8,8 @@
   &__right {
     padding: 1rem;
 
+
+
     .table {
       border-radius: 0.5rem;
       // padding: 0.5rem;
@@ -38,10 +40,25 @@
         }
       }
     }
+
+    .form-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+
+      .button {
+        height: fit-content;
+        flex-grow: 1;
+        width: 100%;
+      }
+
+
+    }
+
   }
 
   &__left {
-    // position: sticky;
     top: 0;
     z-index: 2;
     border-bottom: 1px solid $dark-gray-clr;
@@ -64,7 +81,7 @@
       padding: 1rem;
       border-right: 1px solid $light-gray-clr;
 
-      & > * {
+      &>* {
         outline: 1px solid $light-gray-clr;
         border-radius: 0.5rem;
         overflow: hidden;
@@ -80,6 +97,23 @@
       overflow-y: auto;
       background-color: $white-clr;
       padding: 1rem;
+
+      .form-actions {
+
+        flex-direction: row;
+
+        a {
+          p {
+            text-wrap: nowrap;
+          }
+        }
+
+        .button,
+        .schedule {
+          width: auto;
+        }
+      }
+
     }
   }
 }

@@ -3,14 +3,23 @@
 .statement {
 
   padding: 1rem 5rem;
-  // .submit-buttons {
-  //   margin-bottom: 1rem;
-  // }
+
+  .schedule {
+    margin-top: 1rem;
+  }
+
+  .statement-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
 
 .statement-main {
-
-
   .divider {
     height: 1px;
     background-color: $light-gray-clr;
@@ -166,5 +175,16 @@
       background: rgb($primary-clr-2, 0.65);
     }
 
+  }
+}
+
+@media(max-width:768px) {
+  .statement {
+
+    padding: 1rem;
+
+    .schedule {
+      flex-direction: column;
+    }
   }
 }

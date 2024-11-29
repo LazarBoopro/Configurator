@@ -3,6 +3,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { Button } from "../components/atoms/Button.atom";
 import Statement from "../components/containers/Statement.container";
 import StatementPDF from "../components/containers/StatementPdf.container";
+import Contact from "../components/atoms/Contact.atom";
 
 import "../styles/statement.scss";
 
@@ -16,7 +17,8 @@ export default function Table({ setPage }: { setPage: CallableFunction }) {
             </PDFViewer> */}
 
             <Statement />
-            <div className="submit-buttons">
+            <Contact />
+            <div className="statement-actions">
                 <Button
                     variant="secondary"
                     onClick={() => {
@@ -27,9 +29,6 @@ export default function Table({ setPage }: { setPage: CallableFunction }) {
                 </Button>
 
                 <div>
-                    <Button variant="outline" onClick={() => {}}>
-                        Zakažite izlazak na teren
-                    </Button>
                     <PDFDownloadLink
                         document={<StatementPDF total={total} values={values} />}
                         fileName="Deking Zona Obračun.pdf"
