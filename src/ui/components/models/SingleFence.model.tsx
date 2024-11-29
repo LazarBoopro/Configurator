@@ -31,9 +31,10 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
     return (
         <>
             <color attach="background" args={[`#ebebeb`]} />
-            <fog attach="fog" args={["#ebebeb", 0, 25]} />
+            <fog attach="fog" args={["#ebebeb", 0, 20]} />
 
             {/* --- */}
+
             <Center>
                 <group {...props} receiveShadow castShadow dispose={null}>
                     <mesh
@@ -46,10 +47,10 @@ export default function SingleFence(props: JSX.IntrinsicElements["group"]) {
                     >
                         <meshStandardMaterial
                             roughness={values.wall.includes("wood") ? 1 : 0.5}
-                            metalness={values.wall.includes("wood") ? 0.1 : 0.2}
+                            metalness={0.5}
                             side={THREE.DoubleSide}
                             {...selectedTextureWall}
-                            aoMapIntensity={values.wall === WallTypeEnum.WOOD_1 ? 0.3 : 0.8}
+                            aoMapIntensity={values.wall === WallTypeEnum.WOOD_1 ? 0.2 : 0.8}
                         />
                     </mesh>
                     <mesh

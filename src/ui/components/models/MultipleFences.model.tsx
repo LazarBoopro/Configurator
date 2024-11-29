@@ -56,9 +56,11 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
                     scale={[1, 1, 2.376]}
                 >
                     <meshStandardMaterial
-                        roughness={1}
                         side={THREE.DoubleSide}
-                        metalness={0}
+                        // roughness={1}
+                        // metalness={0}
+                        roughness={values.wall.includes("wood") ? 1 : 0.5}
+                        metalness={0.5}
                         {...selectedTextureWall}
                         aoMapIntensity={values.wall.includes("wood") ? 0 : 1}
                     />
@@ -156,9 +158,10 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
                     scale={[1, 1, 2.376]}
                 >
                     <meshStandardMaterial
-                        roughness={1.25}
+                        // roughness={1}
                         side={THREE.DoubleSide}
-                        metalness={0}
+                        roughness={values.wall.includes("wood") ? 1 : 0.5}
+                        metalness={0.5}
                         aoMapIntensity={values.wall.includes("wood") ? 0 : 1}
                         {...selectedTextureWall}
                     />
@@ -228,9 +231,11 @@ export default function MultipleFences(props: JSX.IntrinsicElements["group"]) {
                     scale={[1, 1, 2.376]}
                 >
                     <meshStandardMaterial
-                        roughness={1}
+                        roughness={values.wall.includes("wood") ? 1 : 0.5}
+                        metalness={0.5}
+                        // roughness={1}
+                        // metalness={0}
                         side={THREE.DoubleSide}
-                        metalness={0}
                         aoMapIntensity={values.wall.includes("wood") ? 0 : 1}
                         {...selectedTextureWall}
                     />
