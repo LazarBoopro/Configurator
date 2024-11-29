@@ -8,3 +8,10 @@
 
   cursor: none;
 }
+
+@media(max-width:767px) {
+
+  .canvas-cursor {
+    display: none !important;
+  }
+}

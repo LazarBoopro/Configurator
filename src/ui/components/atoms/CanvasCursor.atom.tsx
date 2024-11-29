@@ -35,6 +35,7 @@ export default function CanvasCursor({ canvasRef }: { canvasRef: RefObject<HTMLD
         <AnimatePresence>
             visibile && (
             <motion.div
+                className="canvas-cursor"
                 initial={{
                     scale: 0,
                     opacity: 0,
