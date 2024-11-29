@@ -4,14 +4,16 @@ import ConfiguratorRight from "./ConfiguratorRight.molecul";
 import "../styles/configurator.scss";
 
 export default function Configurator({
-  setPage,
+    setPage,
+    visible,
 }: {
-  setPage: CallableFunction;
+    setPage: CallableFunction;
+    visible: boolean;
 }) {
-  return (
-    <div className="configurator">
-      <ConfigurationLeft />
-      <ConfiguratorRight setPage={setPage} />
-    </div>
-  );
+    return (
+        <div className="configurator" style={{ display: visible ? undefined : "none" }}>
+            <ConfigurationLeft visible={visible} />
+            <ConfiguratorRight setPage={setPage} />
+        </div>
+    );
 }

@@ -8,24 +8,24 @@ import Lights from "../atoms/Lights.atom";
 
 import "../../styles/containers/appCanvas.container.scss";
 
-export default function AppCanvas() {
-  const canvasRef = useRef<HTMLDivElement>(null);
+export default function AppCanvas({ visible }: { visible: boolean }) {
+    const canvasRef = useRef<HTMLDivElement>(null);
 
-  return (
-    <div ref={canvasRef} className="three-canvas">
-      <CanvasCursor canvasRef={canvasRef} />
-      <Suspense>
-        <Canvas
-          shadows
-          camera={{
-            fov: 30,
-          }}
-        >
-          <Lights />
-          <Camera />
-          <Scene />
-        </Canvas>
-      </Suspense>
-    </div>
-  );
+    return (
+        <div ref={canvasRef} className="three-canvas">
+            <CanvasCursor canvasRef={canvasRef} />
+            <Suspense>
+                <Canvas
+                    shadows
+                    camera={{
+                        fov: 30,
+                    }}
+                >
+                    <Lights />
+                    <Camera />
+                    {visible && <Scene />}
+                </Canvas>
+            </Suspense>
+        </div>
+    );
 }

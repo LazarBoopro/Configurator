@@ -12,7 +12,10 @@ function App() {
     return (
         <ValuesProvider>
             <main>
-                {page === 0 ? <Configurator setPage={setPage} /> : <Table setPage={setPage} />}
+                {/* {page === 0 ? <Configurator setPage={setPage} /> : <Table setPage={setPage} />} */}
+
+                <Configurator setPage={setPage} visible={page === 0} />
+                {page === 1 && <Table setPage={setPage} />}
             </main>
         </ValuesProvider>
     );
